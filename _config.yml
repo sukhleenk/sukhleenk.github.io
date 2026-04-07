@@ -12,16 +12,12 @@ email:    "sukhleenk1113@gmail.com"
 
 # Bio — shown in the card right under your name (plain text or basic HTML)
 bio: >
-  Recent Computer Science graduate with a passion for building clean, performant,
-  and user-friendly applications. Experienced in full-stack web development,
-  data pipelines, and cloud-native architectures. I thrive at the intersection
-  of elegant engineering and thoughtful design — turning complex problems into
-  simple, reliable solutions.
+  Software developer.
 
 # Social links — comment out any you don't want shown
 social:
-  github:   "https://github.com/yourusername"
-  linkedin: "https://linkedin.com/in/yourusername"
+  github:   "https://github.com/sukhleenk"
+  linkedin: "https://linkedin.com/in/sukhleenkaur13"
   # twitter: "https://twitter.com/yourusername"
 
 # Resume — path to your PDF in assets/ or a full URL; set to "" to hide
