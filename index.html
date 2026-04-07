@@ -18,8 +18,7 @@ layout: null
   <script>
     (function () {
       var saved = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (saved === 'dark' || (!saved && prefersDark)) {
+      if (saved === 'dark') {
         document.documentElement.classList.add('dark');
       }
     }());
@@ -31,6 +30,15 @@ layout: null
 <nav id="main-nav">
   <div class="nav-inner">
     <a href="#about" class="nav-brand">{{ site.name | split: " " | first }}<span>.</span></a>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      {% if site.resume and site.resume != "" %}
+      <li><a href="{{ site.resume | relative_url }}" target="_blank" class="nav-cta">Resume ↗</a></li>
+      {% endif %}
+    </ul>
     <div class="nav-right">
       <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
         <!-- sun (shown in dark mode) -->
@@ -42,15 +50,6 @@ layout: null
         <span></span><span></span><span></span>
       </button>
     </div>
-    <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      {% if site.resume and site.resume != "" %}
-      <li><a href="{{ site.resume | relative_url }}" target="_blank" class="nav-cta">Resume ↗</a></li>
-      {% endif %}
-    </ul>
   </div>
 </nav>
 
@@ -61,7 +60,6 @@ layout: null
 
       <!-- Photo -->
       <div class="photo-col">
-        <!-- TO USE YOUR PHOTO: add assets/img/photo.jpg, delete the placeholder div, uncomment the img tag -->
         <!-- <img src="{{ '/assets/img/photo.jpg' | relative_url }}" alt="{{ site.name }}" class="profile-photo" /> -->
         <div class="profile-photo-placeholder" aria-hidden="true">👩‍💻</div>
       </div>
