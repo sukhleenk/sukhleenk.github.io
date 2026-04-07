@@ -406,6 +406,7 @@ html.dark .edu-logo { filter: brightness(0.85) contrast(1.05); }
 .edu-degree { font-size: 1rem; font-weight: 700; color: var(--text); }
 .edu-school { font-size: 0.85rem; color: var(--muted); margin: 0.2rem 0 0.4rem; }
 .edu-honours {
+  font-weight: bold;
   font-size: 0.85rem;
   color: var(--text);
   margin-bottom: 0.5rem;
