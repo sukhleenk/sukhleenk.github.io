@@ -1,0 +1,20 @@
+# _data/skills.yml
+# Add, remove, or rename categories freely.
+
+- category: "Languages"
+  items: [Python, JavaScript, TypeScript, Java, "C++", SQL]
+
+- category: "Frontend"
+  items: [React, "Next.js", HTML5, CSS3, "Tailwind CSS", Redux]
+
+- category: "Backend"
+  items: ["Node.js", Express, Django, "REST APIs", GraphQL]
+
+- category: "Databases"
+  items: [PostgreSQL, MongoDB, MySQL, Redis]
+
+- category: "Tools & DevOps"
+  items: [Git, Docker, Linux, AWS, "CI/CD", Figma]
+
+- category: "Interests"
+  items: ["Machine Learning", "Open Source", "System Design", "Cloud Computing"]

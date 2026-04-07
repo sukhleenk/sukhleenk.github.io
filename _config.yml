@@ -1,0 +1,48 @@
+# ============================================================
+#  _config.yml — edit this to update your personal info
+# ============================================================
+
+# Basic info
+name:     "Sukhleen Kaur"
+title:    "Software Developer"
+subtitle: "Software Engineer • University of Mississippi"
+
+location: "Salt Lake City, UT"
+email:    "sukhleenk1113@gmail.com"
+
+# Bio — shown in the card right under your name (plain text or basic HTML)
+bio: >
+  Recent Computer Science graduate with a passion for building clean, performant,
+  and user-friendly applications. Experienced in full-stack web development,
+  data pipelines, and cloud-native architectures. I thrive at the intersection
+  of elegant engineering and thoughtful design — turning complex problems into
+  simple, reliable solutions.
+
+# Social links — comment out any you don't want shown
+social:
+  github:   "https://github.com/yourusername"
+  linkedin: "https://linkedin.com/in/yourusername"
+  # twitter: "https://twitter.com/yourusername"
+
+# Resume — path to your PDF in assets/ or a full URL; set to "" to hide
+resume: ""   # e.g. "assets/resume.pdf"  or  "https://example.com/resume.pdf"
+
+# Floating background code snippets
+code_snippets:
+  - "const solve = (problem) => {};"
+  - "git commit -m 'feat: ship it'"
+  - "O(log n)"
+  - "SELECT * FROM dreams;"
+  - "docker run --rm -it life"
+  - "npm run build"
+  - "def hello_world():"
+  - "async/await"
+  - "{ ...spread }"
+  - "while(learning) { grow(); }"
+  - "sudo make me a sandwich"
+  - "pip install confidence"
+  - "import { passion } from 'life';"
+
+# Jekyll settings — don't change these
+markdown:  kramdown
+permalink: pretty

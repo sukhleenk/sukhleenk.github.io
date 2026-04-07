@@ -1,0 +1,31 @@
+# _data/experience.yml
+# Add or remove jobs freely. Order here = order on the page.
+
+- role: "Software Developer Intern"
+  company: "Tech Company Inc."
+  period: "May 2024 – Aug 2024"
+  description: >
+    Built and maintained microservices for a distributed data pipeline.
+    Reduced API response times by 40% through query optimisation and
+    targeted caching strategies. Collaborated with senior engineers on
+    architecture reviews and on-call rotations.
+  tags: [Python, AWS, PostgreSQL, FastAPI]
+
+- role: "Junior Web Developer"
+  company: "Startup Studio"
+  period: "Jan 2023 – Apr 2024"
+  description: >
+    Led frontend development of the company's flagship SaaS product.
+    Shipped a full redesign of the dashboard that improved user retention
+    by 22%. Worked closely with designers and backend engineers in a
+    fast-paced agile environment.
+  tags: [React, TypeScript, Node.js, Figma]
+
+- role: "Teaching Assistant — Intro to CS"
+  company: "University of Somewhere"
+  period: "Sep 2022 – Dec 2022"
+  description: >
+    Held weekly office hours and graded assignments for a 200-student
+    introductory programming course. Helped struggling students build
+    debugging intuition and a mental model for problem solving.
+  tags: [Python, Teaching, Mentoring]

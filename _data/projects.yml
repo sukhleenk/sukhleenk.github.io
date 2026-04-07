@@ -1,0 +1,43 @@
+# _data/projects.yml
+# Set featured: true to show a project in the Featured Projects section.
+# featured projects appear first and get a larger card.
+
+- name: "Project Alpha"
+  featured: true
+  description: >
+    A full-stack web application for managing personal finances. Features
+    real-time data visualisation, budget tracking, and automated insights
+    powered by machine learning. Used by 500+ beta testers.
+  tags: [React, Node.js, PostgreSQL, Chart.js]
+  github: "https://github.com/yourusername/project-alpha"
+  live: ""
+  # image: "assets/img/project-alpha.png"   ← uncomment + add image to show a preview
+
+- name: "DevTools CLI"
+  featured: true
+  description: >
+    A command-line productivity tool that automates repetitive developer
+    workflows — scaffolding, deployments, and environment setup — saving
+    hours of manual work per week.
+  tags: [Python, Click, Docker]
+  github: "https://github.com/yourusername/devtools-cli"
+  live: ""
+
+- name: "Portfolio CMS"
+  featured: false
+  description: >
+    A headless CMS built with Next.js and a custom API layer, allowing
+    non-technical users to manage blog content through a clean admin
+    dashboard.
+  tags: [Next.js, TypeScript, MongoDB]
+  github: ""
+  live: "https://example.com"
+
+- name: "Real-Time Chat App"
+  featured: false
+  description: >
+    A scalable chat application supporting rooms, direct messages, and
+    file sharing — built with WebSockets and a Redis pub/sub architecture.
+  tags: [Node.js, Socket.io, Redis, React]
+  github: "https://github.com/yourusername/chat-app"
+  live: ""

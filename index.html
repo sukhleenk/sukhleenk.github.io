@@ -1,0 +1,226 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{ site.name }} — {{ site.title }}. {{ site.bio | strip_html | truncate: 160 }}" />
+  <title>{{ site.name }}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <!-- Prevent flash of wrong theme — default is light -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    }());
+  </script>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────── -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#about" class="nav-brand">{{ site.name | split: " " | first }}<span>.</span></a>
+    <div class="nav-right">
+      <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+        <!-- sun (shown in dark mode) -->
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <!-- moon (shown in light mode) -->
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      {% if site.resume and site.resume != "" %}
+      <li><a href="{{ site.resume | relative_url }}" target="_blank" class="nav-cta">Resume ↗</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Profile ──────────────────────────────────────────── -->
+<header id="about">
+  <div class="wrapper">
+    <div class="profile-grid">
+
+      <!-- Photo -->
+      <div class="photo-col">
+        <!-- TO USE YOUR PHOTO: add assets/img/photo.jpg, delete the placeholder div, uncomment the img tag -->
+        <!-- <img src="{{ '/assets/img/photo.jpg' | relative_url }}" alt="{{ site.name }}" class="profile-photo" /> -->
+        <div class="profile-photo-placeholder" aria-hidden="true">👩‍💻</div>
+      </div>
+
+      <!-- Info -->
+      <div class="info-col">
+        <p class="greeting">Hello, I'm</p>
+        <h1>{{ site.name }}</h1>
+        <p class="profile-subtitle">{{ site.subtitle }}</p>
+        <p class="profile-bio">{{ site.bio }}</p>
+        <div class="contact-row">
+          <a href="mailto:{{ site.email }}" class="contact-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            {{ site.email }}
+          </a>
+          {% if site.social.github %}
+          <a href="{{ site.social.github }}" class="contact-link" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          {% endif %}
+          {% if site.social.linkedin %}
+          <a href="{{ site.social.linkedin }}" class="contact-link" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          {% endif %}
+          {% if site.social.twitter %}
+          <a href="{{ site.social.twitter }}" class="contact-link" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            Twitter
+          </a>
+          {% endif %}
+          {% if site.resume and site.resume != "" %}
+          <a href="{{ site.resume | relative_url }}" class="contact-link" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Resume
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ── Experience ───────────────────────────────────────── -->
+<section id="experience">
+  <div class="wrapper">
+    <h2 class="section-heading"><span class="section-num">01</span>Experience</h2>
+    {% for job in site.data.experience %}
+    <div class="card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">{{ job.role }}</div>
+          <div class="exp-company">{{ job.company }}</div>
+        </div>
+        <span class="exp-period">{{ job.period }}</span>
+      </div>
+      <p class="exp-desc">{{ job.description }}</p>
+      {% if job.tags %}
+      <div class="tags">{% for tag in job.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── Featured Projects ─────────────────────────────────── -->
+{% assign featured = site.data.projects | where: "featured", true %}
+{% if featured.size > 0 %}
+<section id="projects">
+  <div class="wrapper">
+    <h2 class="section-heading"><span class="section-num">02</span>Featured Projects</h2>
+    {% for project in featured %}
+    <div class="card project-card">
+      {% if project.image %}
+      <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="project-img" />
+      {% endif %}
+      <div class="project-name">{{ project.name }}</div>
+      <p class="project-desc">{{ project.description }}</p>
+      {% if project.tags %}
+      <div class="tags">{% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+      {% endif %}
+      <div class="project-links">
+        {% if project.github and project.github != "" %}
+        <a href="{{ project.github }}" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View Code
+        </a>
+        {% endif %}
+        {% if project.live and project.live != "" %}
+        <a href="{{ project.live }}" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Live Demo
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ── Education ────────────────────────────────────────── -->
+<section id="education">
+  <div class="wrapper">
+    <h2 class="section-heading"><span class="section-num">03</span>Education</h2>
+    {% for edu in site.data.education %}
+    <div class="card edu-card">
+      <div class="edu-main">
+        <div class="edu-degree">{{ edu.degree }}</div>
+        <div class="edu-school">
+          {{ edu.school }}{% if edu.period %} &middot; {{ edu.period }}{% endif %}{% if edu.gpa and edu.gpa != "" %} &middot; GPA {{ edu.gpa }}{% endif %}
+        </div>
+        {% if edu.honours and edu.honours != "" %}
+        <p class="edu-honours">{{ edu.honours }}</p>
+        {% endif %}
+        {% if edu.coursework %}
+        <p class="coursework-label">Relevant Coursework</p>
+        <div class="tags">{% for course in edu.coursework %}<span class="tag">{{ course }}</span>{% endfor %}</div>
+        {% endif %}
+      </div>
+      <div class="edu-logo-col">
+        <img src="{{ '/assets/img/university-logo.webp' | relative_url }}" alt="{{ edu.school }} logo" class="edu-logo" />
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ── Skills ───────────────────────────────────────────── -->
+<section id="skills">
+  <div class="wrapper">
+    <h2 class="section-heading"><span class="section-num">04</span>Technical Skills</h2>
+    <div class="skills-grid">
+      {% for group in site.data.skills %}
+      <div class="skill-card">
+        <div class="skill-category">{{ group.category }}</div>
+        <div class="skill-pills">
+          {% for skill in group.items %}<span class="skill-pill">{{ skill }}</span>{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────── -->
+<footer>
+  <div class="wrapper">
+    <span>© 2026 {{ site.name }}</span>
+    <span class="footer-sep">·</span>
+    <span>Software Developer</span>
+    <span class="footer-sep">·</span>
+    <span>Built with Jekyll</span>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/background.js' | relative_url }}"></script>
+</body>
+</html>
