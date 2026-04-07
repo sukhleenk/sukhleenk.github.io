@@ -2,33 +2,27 @@
 # Set featured: true to show a project in the Featured Projects section.
 # featured projects appear first and get a larger card.
 
-- name: "Project Alpha"
+- name: "Paletto"
   featured: true
   description: >
-    A full-stack web application for managing personal finances. Features
-    real-time data visualisation, budget tracking, and automated insights
-    powered by machine learning. Used by 500+ beta testers.
+    ...
   tags: [React, Node.js, PostgreSQL, Chart.js]
   github: "https://github.com/yourusername/project-alpha"
-  live: ""
+  live: "https://mypaletto.vercel.app"
   # image: "assets/img/project-alpha.png"   ← uncomment + add image to show a preview
 
-- name: "DevTools CLI"
+- name: "API Latency Monitor"
   featured: true
   description: >
-    A command-line productivity tool that automates repetitive developer
-    workflows — scaffolding, deployments, and environment setup — saving
-    hours of manual work per week.
+    ...
   tags: [Python, Click, Docker]
   github: "https://github.com/yourusername/devtools-cli"
-  live: ""
+  live: "https://pypi.org/project/api-latency-monitor/"
 
-- name: "Portfolio CMS"
-  featured: false
+- name: "Sift"
+  featured: true
   description: >
-    A headless CMS built with Next.js and a custom API layer, allowing
-    non-technical users to manage blog content through a clean admin
-    dashboard.
+    ...
   tags: [Next.js, TypeScript, MongoDB]
   github: ""
   live: "https://example.com"
