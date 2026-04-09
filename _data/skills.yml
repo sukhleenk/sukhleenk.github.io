@@ -1,20 +1,19 @@
 # _data/skills.yml
-# Add, remove, or rename categories freely.
 
 - category: "Languages"
-  items: [Python, JavaScript, TypeScript, Java, "C++", SQL]
+  items: [Python, Java, "JavaScript/Typescript", "C#", R, SQL, "Bash/Shell", "HTML/CSS", "LaTeX"]
 
-- category: "Frontend"
-  items: [React, "Next.js", HTML5, CSS3, "Tailwind CSS", Redux]
-
-- category: "Backend"
-  items: ["Node.js", Express, Django, "REST APIs", GraphQL]
+- category: "Frameworks"
+  items: [React, React Native, "Next.js", "Node.js", Express, Django, "Tailwind CSS", "REST APIs", ".NET MAUI"]
 
 - category: "Databases"
-  items: [PostgreSQL, MongoDB, MySQL, Redis]
+  items: [MS SQL Server, PostgreSQL, MySQL, MongoDB, Redis, SQLite, Supabase]
+
+- category: "ML/AI"
+  items: [PyTorch, scikit-learn, Keras, OpenCV, Huggingface Transformers, Numpy, Pandas]
 
 - category: "Tools & DevOps"
-  items: [Git, Docker, Linux, AWS, "CI/CD", Figma]
+  items: [Git, Docker, AWS, Kubernetes, Linux, "CI/CD (Github Actions)", Dynatrace, Firebase]
 
 - category: "Interests"
-  items: ["Machine Learning", "Open Source", "System Design", "Cloud Computing"]
+  items: ["Open Source", "Art", "Crocheting", "Hiking", "Gardening"]

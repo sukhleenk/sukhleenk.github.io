@@ -141,7 +141,10 @@ layout: null
   <div class="wrapper">
     <h2 class="section-heading"><span class="section-num">02</span>Featured Projects</h2>
     {% for project in featured %}
-    <div class="card project-card">
+    <div class="card project-card{% if project.screenshots %} project-card--with-shots{% endif %}">
+      {% if project.screenshots %}
+      <div class="project-content">
+      {% endif %}
       {% if project.image %}
       <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="project-img" />
       {% endif %}
@@ -170,6 +173,14 @@ layout: null
         </a>
         {% endif %}
       </div>
+      {% if project.screenshots %}
+      </div>
+      <div class="project-shots{% if project.screenshot_inset %} project-shots--single{% endif %}">
+        {% for shot in project.screenshots %}
+        <img src="{{ shot | relative_url }}" alt="{{ project.name }} screenshot" />
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
     {% endfor %}
   </div>
@@ -207,10 +218,10 @@ layout: null
 <section id="skills">
   <div class="wrapper">
     <h2 class="section-heading"><span class="section-num">04</span>Technical Skills</h2>
-    <div class="skills-grid">
+    <div class="skills-rows">
       {% for group in site.data.skills %}
-      <div class="skill-card">
-        <div class="skill-category">{{ group.category }}</div>
+      <div class="skill-row">
+        <span class="skill-row-label">{{ group.category }}</span>
         <div class="skill-pills">
           {% for skill in group.items %}<span class="skill-pill">{{ skill }}</span>{% endfor %}
         </div>
