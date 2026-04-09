@@ -5,12 +5,12 @@
   company: "Western Governors University"
   period: "Feb 2025 – Mar 2026"
   description: >
-    • Shipped features across Agile sprints on a Dockerized, Kubernetes-based AWS stack with continuous deployments.
-    • Logged, triaged, and resolved 5+ production defects per sprint over 25 sprints in Jira, documenting
+    * Shipped features across Agile sprints on a Dockerized, Kubernetes-based AWS stack with continuous deployments.
+    * Logged, triaged, and resolved 5+ production defects per sprint over 25 sprints in Jira, documenting
     reproduction steps, severity levels, and status updates across client-facing REST APIs and backend microservices.
-    • Cut incident response time by 90% by monitoring Dynatrace metrics and configuring xMatters alerts.
-    • Optimized critical API endpoints, cutting response latency from 0.321s to 0.047s (85.4%).
-    • Authored and standardized 30+ internal/external API endpoint specs and engineering workflows in the internal
+    * Cut incident response time by 90% by monitoring Dynatrace metrics and configuring xMatters alerts.
+    * Optimized critical API endpoints, cutting response latency from 0.321s to 0.047s (85.4%).
+    * Authored and standardized 30+ internal/external API endpoint specs and engineering workflows in the internal
     Wiki, reducing QA/release ambiguity and accelerating developer onboarding.
   tags: [Python, AWS, Docker, Kubernetes, Jira, REST APIs, Agile, Git]
 
@@ -18,8 +18,8 @@
   company: "International Paper"
   period: "Jun 2024 - Feb 2025"
   description: >
-    • Managed, maintained, and automated 25+ EDI integrations weekly for 20 enterprise customers.
-    • Authored a Python automation to detect and auto-remediate recurring EDI integration failures, cutting manual
+    * Managed, maintained, and automated 25+ EDI integrations weekly for 20 enterprise customers.
+    * Authored a Python automation to detect and auto-remediate recurring EDI integration failures, cutting manual
     ticket resolution time by 85%.
   tags: [Python, PowerBI, EDI Integration, Bash Scripting]
 
@@ -27,8 +27,8 @@
   company: "Continental"
   period: "May 2023 – Aug 2023"
   description: >
-    • Independently built a Django dashboard deployed on factory machinery, replacing paper logs by
+    * Independently built a Django dashboard deployed on factory machinery, replacing paper logs by
     combining real-time Power BI metrics with MS SQL production data.
-    • Replaced Excel-based production tracking with a Django app enabling production managers to manage tire
+    * Replaced Excel-based production tracking with a Django app enabling production managers to manage tire
     production quotas, including bulk migration of 2 years of historical data into MS SQL Server.
   tags: [Python, Django, PowerBI, MSSQL]
