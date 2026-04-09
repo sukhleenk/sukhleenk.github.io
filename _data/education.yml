@@ -4,7 +4,7 @@
   school: "University of Mississippi"
   period: "2020 – 2024"
   gpa: "3.7 / 4.0"          # set to "" to hide
-  honours: "Dean's List | Outstanding Student in Computer Science"     # set to "" to hide
+  honours: "Chancellor's List | Outstanding Student in Computer Science"     # set to "" to hide
   coursework:
     - Data Structures & Algorithms
     - Operating Systems
