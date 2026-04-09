@@ -202,7 +202,7 @@ header#about {
   display: grid;
   grid-template-columns: 160px 1fr;
   gap: 2.4rem;
-  align-items: start;   /* top-align photo with text */
+  align-items: stretch;
 }
 
 /* Photo */
@@ -210,17 +210,28 @@ header#about {
   position: relative;
   display: flex;
   justify-content: center;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 4px solid var(--photo-border);
+  box-shadow: var(--photo-shadow);
 }
 .profile-photo,
 .profile-photo-placeholder {
   width: 150px;
-  aspect-ratio: 3 / 4;
+  height: 100%;
   border-radius: var(--radius);
   display: block;
-  border: 4px solid var(--photo-border);
-  box-shadow: var(--photo-shadow);
 }
-.profile-photo { object-fit: cover; }
+@keyframes photo-zoom-in {
+  from { transform: scale(1); }
+  to   { transform: scale(1.5); }
+}
+.profile-photo {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.07);
+  animation: photo-zoom-in 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 .profile-photo-placeholder {
   background: var(--surface-2);
   display: flex;
@@ -350,6 +361,18 @@ section {
   padding-top: 0.15rem;
 }
 .exp-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+.exp-bullets {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.exp-bullets li {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
 
 /* ── Projects ────────────────────────────────────────────── */
 .project-img {
@@ -523,6 +546,8 @@ footer .wrapper {
   .profile-photo,
   .profile-photo-placeholder {
     width: 120px;
+    height: auto;
+    aspect-ratio: 3 / 4;
   }
   .profile-photo-placeholder { font-size: 3rem; }
   .contact-row { justify-content: center; }
