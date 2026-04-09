@@ -6,7 +6,7 @@
   featured: true
   description: "Full-stack SaaS for artists to manage commissions, projects, inventory, and finances, built web-first with Next.js and Supabase, alongside a cross-platform Expo mobile app. Designed with a minimal interface so it never gets in the way of the creative process. Built for artists by an artist."
   tags: [TypeScript, Next.js, React, Node.js, PostgreSQL, Supabase, Tailwind CSS, Vercel]
-  github: "https://github.com/yourusername/project-alpha"
+  github: ""
   live: "https://mypaletto.vercel.app"
   screenshots:
     - "assets/img/paletto_home.png"
@@ -16,7 +16,7 @@
   featured: true
   description: "A Python CLI tool published on PyPI that monitors HTTP endpoints for latency degradation, with full test coverage across the HTTP engine, database layer, and formatter. Inspired by wanting a simple, zero-config tool for tracking endpoint health without the setup overhead of Prometheus, Grafana, or a full APM stack."
   tags: [Python, Click, Requests, PyYAML, SQLite, pytest, twine, build, Docker]
-  github: "https://github.com/yourusername/devtools-cli"
+  github: "https://github.com/sukhleenk/API-Latency-Monitor"
   live: "https://pypi.org/project/api-latency-monitor/"
   screenshots:
     - "assets/img/alm_cli.png"
@@ -25,8 +25,8 @@
   featured: true
   description: "A macOS/Linux menu bar app with 12 active users that fetches and summarizes ArXiv papers using on-device transformer models and a local NLP pipeline for semantic grouping and ranking."
   tags: [Python, SQLite, Huggingface Transformers, PyTorch, Scikit-learn, Numpy, Rumps, WebKit]
-  github: ""
-  live: "https://example.com"
+  github: "https://github.com/sukhleenk/sift"
+  live: "https://github.com/sukhleenk/sift"
   screenshot_inset: true
   screenshots:
     - "assets/img/sift.png"
