@@ -14,7 +14,7 @@
 
 - name: "API Latency Monitor"
   featured: true
-  description: "A Python CLI tool published on PyPI that monitors HTTP endpoints for latency degradation, with full test coverage across the HTTP engine, database layer, and formatter. Inspired by wanting a simple, zero-config tool for tracking endpoint health without the setup overhead of Prometheus, Grafana, or a full APM stack."
+  description: "A Python CLI tool published on PyPI that monitors HTTP endpoints for latency degradation, with full test coverage across the HTTP engine, database layer, and formatter. Sends notifications to Telegram when important latency degradation events occur. Inspired by wanting a simple, zero-config tool for tracking endpoint health without the setup overhead of Prometheus, Grafana, or a full APM stack."
   tags: [Python, Click, Requests, PyYAML, SQLite, pytest, twine, build, Docker]
   github: "https://github.com/sukhleenk/API-Latency-Monitor"
   live: "https://pypi.org/project/api-latency-monitor/"
