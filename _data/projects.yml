@@ -5,7 +5,11 @@
 - name: "Paletto"
   featured: true
   description: >
-    ...
+    • Shipped a full-stack studio management SaaS for artists covering project tracking, commission management,
+    supply inventory, session logging, and financial reporting.
+    • Architected a Supabase backend with PostgreSQL, row-level security, and real-time sync powering a Next.js
+    frontend and a cross-platform Expo mobile app with focus on the iOS platform.
+    • Integrated Supabase Auth with Google OAuth, email/password, and phone-based account recovery.
   tags: [React, Node.js, PostgreSQL, Chart.js]
   github: "https://github.com/yourusername/project-alpha"
   live: "https://mypaletto.vercel.app"
@@ -14,7 +18,8 @@
 - name: "API Latency Monitor"
   featured: true
   description: >
-    ...
+    • Built and published a Python CLI tool on PyPI to monitor HTTP endpoints for latency degradation.
+    • Wrote full test coverage for the HTTP engine, database layer, and formatter via mocked in-memory SQLite.
   tags: [Python, Click, Docker]
   github: "https://github.com/yourusername/devtools-cli"
   live: "https://pypi.org/project/api-latency-monitor/"
@@ -22,7 +27,11 @@
 - name: "Sift"
   featured: true
   description: >
-    ...
+    • Built and distributed a macOS/Linux menu bar app with 12 active users that fetches and summarizes
+    ArXiv papers via on-device transformer models, leading a team of 3 including researchers for user studies.
+    • Detects CPU and GPU during setup to recommend optimal summarization and embedding models automatically.
+    • Implemented a local NLP pipeline using sentence-transformers and k-means clustering to group and rank papers
+    by semantic similarity, with TF-IDF cluster labeling and SQLite-backed caching.
   tags: [Next.js, TypeScript, MongoDB]
   github: ""
   live: "https://example.com"
