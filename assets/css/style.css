@@ -471,11 +471,11 @@ section {
   margin-bottom: 0;
 }
 .app-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 11px;
   object-fit: cover;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
   border: 1px solid var(--border);
 }
 
