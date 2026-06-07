@@ -470,6 +470,14 @@ section {
   flex-direction: column;
   margin-bottom: 0;
 }
+.app-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--border);
+}
 
 /* ── Education ───────────────────────────────────────────── */
 .edu-card { display: flex; gap: 1.5rem; align-items: flex-start; }
