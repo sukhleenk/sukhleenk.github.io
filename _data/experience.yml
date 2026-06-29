@@ -8,7 +8,6 @@
     - "Design, build, ship, and support a portfolio of 5 consumer and SaaS products end-to-end — from concept and UI design through App Store release, analytics, and ongoing user support (alongside full-time employment)."
     - "Shipped 2 iOS apps to the App Store (Aera, Tidemark, with others under development) with [172 total downloads / 70 monthly active users] and a 5-star average rating."
     - "Built Paletto, a full-stack commission-management SaaS for artists, web-first with Next.js and Supabase plus a cross-platform Expo mobile app (under devlopment), taking it from zero to 32 monthly users."
-    - "Optimized critical API endpoints, cutting response latency from 0.321s to 0.047s (85.4%)."
   tags: [TypeScript, Next.js, React Native, Expo, Supabase, Swift, Python]
 
 - role: "Software Developer"
