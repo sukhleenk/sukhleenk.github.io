@@ -5,9 +5,9 @@
   company: "Self-employed"
   period: "Jan 2026 – Present"
   bullets:
-    - "Design, build, ship, and support a portfolio of 5 consumer and SaaS products end-to-end — from concept and UI design through App Store release, analytics, and ongoing user support (alongside full-time employment)."
+    - "Design, build, ship, and support a portfolio of 5 consumer and SaaS products end-to-end, from concept and careful UI design through production releases, analytics, and ongoing user support (alongside full-time employment)."
     - "Shipped 2 iOS apps to the App Store (with others under development) with 172 total downloads and 70 monthly active users during the first month, and a 5-star average rating."
-    - "Built Paletto, a full-stack commission-management SaaS for artists, web-first with Next.js and Supabase plus a cross-platform Expo mobile app (under development), taking it from zero to 32 monthly users."
+    - "Built Paletto, a full-stack commission-management SaaS for artists, web-first with Next.js and Supabase plus a cross-platform Expo mobile app (under development), taking it from zero to ~32 monthly users."
   tags: [TypeScript, Next.js, React Native, Expo, Supabase, Swift, Python]
 
 - role: "Software Developer"

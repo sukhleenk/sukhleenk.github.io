@@ -1,10 +1,10 @@
 # _data/skills.yml
 
 - category: "Languages"
-  items: [Python, Java, "JavaScript/Typescript", "C#", R, SQL, "Bash/Shell", "HTML/CSS", "LaTeX"]
+  items: [Python, Java, "JavaScript/Typescript", "Swift", "C#", R, SQL, "Bash/Shell", "HTML/CSS", "LaTeX"]
 
 - category: "Frameworks"
-  items: [React, React Native, "Next.js", "Node.js", Express, Django, "Tailwind CSS", "REST APIs", ".NET MAUI"]
+  items: [React, React Native, "Next.js", "Node.js", Express, Django, "Tailwind CSS", "REST APIs", SwiftUI, ".NET MAUI"]
 
 - category: "Databases"
   items: [MS SQL Server, PostgreSQL, MySQL, MongoDB, Redis, SQLite, Supabase]

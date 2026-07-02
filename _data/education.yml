@@ -1,15 +1,15 @@
 # _data/education.yml
 
-- degree: "B.Sc. Computer Science"
+- degree: "B.S. Computer Science"
   school: "University of Mississippi"
   period: "2020 – 2024"
-  gpa: "3.7 / 4.0"          # set to "" to hide
-  honours: "Chancellor's List | Outstanding Student in Computer Science"     # set to "" to hide
+  gpa: "3.7 / 4.0"     
+  honours: "Chancellor's List | Outstanding Student in Computer Science"
   coursework:
     - Data Structures & Algorithms
     - Operating Systems
     - Databases
-    - Information Visualization
+    - Information Visualization in R
     - Software Engineering
     - Networks
     - Statistics & Probability

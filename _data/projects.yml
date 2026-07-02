@@ -4,7 +4,7 @@
 
 - name: "Paletto"
   featured: true
-  description: "Full-stack SaaS for artists to manage commissions, projects, inventory, and finances, built web-first with Next.js and Supabase, alongside a cross-platform Expo mobile app. Designed with a minimal interface so it never gets in the way of the creative process. Built for artists by an artist."
+  description: "Full-stack SaaS for artists to manage commissions, projects, inventory, and finances, built web-first with Next.js and Supabase, alongside a cross-platform Expo mobile app. Designed with a minimal interface in Figma with multiple iterations based on user feedback so that it never gets in the way of the creative process."
   tags: [TypeScript, Next.js, React, Node.js, PostgreSQL, Supabase, Tailwind CSS, Vercel]
   github: ""
   live: "https://mypaletto.vercel.app"
@@ -23,17 +23,10 @@
 
 - name: "Sift"
   featured: true
-  description: "A macOS/Linux menu bar app with 12 active users that fetches and summarizes ArXiv papers using on-device transformer models and a local NLP pipeline for semantic grouping and ranking."
+  description: "A macOS/Linux menu bar app with 12 active users that fetches and summarizes ArXiv papers using on-device transformer models and a local NLP pipeline for semantic grouping and ranking. Iteratively updating and improving the app based on real researcher feedback."
   tags: [Python, SQLite, Huggingface Transformers, PyTorch, Scikit-learn, Numpy, Rumps, WebKit]
   github: "https://github.com/sukhleenk/sift"
   live: "https://github.com/sukhleenk/sift"
   screenshot_inset: true
   screenshots:
     - "assets/img/sift.png"
-
-- name: "Real-Time Chat App"
-  featured: false
-  description: "A scalable chat app with rooms, direct messages, and file sharing built on WebSockets and a Redis pub/sub architecture."
-  tags: [Node.js, Socket.io, Redis, React]
-  github: "https://github.com/yourusername/chat-app"
-  live: ""
