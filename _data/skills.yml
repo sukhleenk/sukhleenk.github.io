@@ -13,7 +13,7 @@
   items: [PyTorch, scikit-learn, Keras, OpenCV, Huggingface Transformers, Numpy, Pandas]
 
 - category: "Tools & DevOps"
-  items: [Git, Docker, AWS, Kubernetes, Linux, "CI/CD (Github Actions)", Dynatrace, Firebase]
+  items: [Git, Docker, AWS, Kubernetes, Figma, Adobe XD, Linux, "CI/CD (Github Actions)", Dynatrace, Firebase]
 
 - category: "Interests"
   items: ["Open Source", "Art", "Crocheting", "Hiking", "Gardening"]

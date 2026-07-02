@@ -4,7 +4,7 @@
 
 - name: "Paletto"
   featured: true
-  description: "Full-stack SaaS for artists to manage commissions, projects, inventory, and finances, built web-first with Next.js and Supabase, alongside a cross-platform Expo mobile app. Designed with a minimal interface in Figma with multiple iterations based on user feedback so that it never gets in the way of the creative process."
+  description: "Full-stack SaaS for artists to manage commissions, projects, inventory, and finances, built web-first with Next.js and Supabase, alongside a cross-platform Expo mobile app. Designed in Figma across web and iOS so that it never gets in the way of the creative process. Iterated on the dashboard layout and navigation flow based on early user feedback, simplifying the information hierarchy to reduce the number of taps needed to log a session or track a commission."
   tags: [TypeScript, Next.js, React, Node.js, PostgreSQL, Supabase, Tailwind CSS, Vercel]
   github: ""
   live: "https://mypaletto.vercel.app"
