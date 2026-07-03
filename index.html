@@ -31,8 +31,8 @@ layout: null
   <div class="nav-inner">
     <a href="#about" class="nav-brand">{{ site.name | split: " " | first }}<span>.</span></a>
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#skills">Skills</a></li>
       {% if site.resume and site.resume != "" %}
@@ -106,44 +106,83 @@ layout: null
   </div>
 </header>
 
-<!-- ── Experience ───────────────────────────────────────── -->
-<section id="experience">
-  <div class="wrapper">
-    <h2 class="section-heading"><span class="section-num">01</span>Experience</h2>
-    {% for job in site.data.experience %}
-    <div class="card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">{{ job.role }}</div>
-          <div class="exp-company">{{ job.company }}</div>
-        </div>
-        <span class="exp-period">{{ job.period }}</span>
-      </div>
-      {% if job.bullets %}
-      <ul class="exp-bullets">
-        {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
-      </ul>
-      {% elsif job.description %}
-      <p class="exp-desc">{{ job.description }}</p>
-      {% endif %}
-      {% if job.tags %}
-      <div class="tags">{% for tag in job.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
-      {% endif %}
-    </div>
-    {% endfor %}
-  </div>
-</section>
-
 <!-- ── Projects ───────────────────────────────────────────── -->
 <section id="projects">
   <div class="wrapper">
-    <h2 class="section-heading"><span class="section-num">02</span>Projects</h2>
-    {% assign featured = site.data.projects | where: "featured", true %}
-    {% for project in featured %}
+    <h2 class="section-heading"><span class="section-num">01</span>Projects</h2>
+
+    <!-- Apps -->
+    <h3 class="subsection-heading">Commercial Apps</h3>
+    {% assign app_projects = site.data.projects | where: "category", "commercial-apps" %}
+    {% for project in app_projects %}
+      {% unless project.app_icon %}
     <div class="card project-card{% if project.screenshots %} project-card--with-shots{% endif %}">
-      {% if project.screenshots %}
-      <div class="project-content">
+      {% if project.screenshots %}<div class="project-content">{% endif %}
+      {% if project.image %}
+      <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="project-img" />
       {% endif %}
+      <div class="project-name">{{ project.name }}</div>
+      {% if project.bullets %}
+      <ul class="exp-bullets">
+        {% for bullet in project.bullets %}<li>{{ bullet }}</li>{% endfor %}
+      </ul>
+      {% elsif project.description %}
+      <p class="project-desc">{{ project.description }}</p>
+      {% endif %}
+      {% if project.tags %}
+      <div class="tags">{% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+      {% endif %}
+      <div class="project-links">
+        {% if project.github and project.github != "" %}
+        <a href="{{ project.github }}" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View Code
+        </a>
+        {% endif %}
+        {% if project.live and project.live != "" %}
+        <a href="{{ project.live }}" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Live Project
+        </a>
+        {% endif %}
+      </div>
+      {% if project.screenshots %}
+      </div>
+      <div class="project-shots{% if project.screenshot_inset %} project-shots--single{% endif %}{% if project.screenshot_overlay %} project-shots--overlay{% endif %}">
+        {% for shot in project.screenshots %}
+        <img src="{{ shot | relative_url }}" alt="{{ project.name }} screenshot" />
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+      {% endunless %}
+    {% endfor %}
+    <div class="apps-grid">
+    {% for project in app_projects %}
+      {% if project.app_icon %}
+      <div class="card app-card">
+        <img src="{{ project.app_icon | relative_url }}" alt="{{ project.name }} icon" class="app-icon" />
+        <div class="project-name">{{ project.name }}</div>
+        <p class="project-desc">{{ project.description }}</p>
+        <div class="project-links">
+          {% if project.live and project.live != "" %}
+          <a href="{{ project.live }}" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <!-- Developer & Research Tools -->
+    <h3 class="subsection-heading">Developer &amp; Research Tools</h3>
+    {% assign dev_tools = site.data.projects | where: "category", "dev-tools" %}
+    {% for project in dev_tools %}
+    <div class="card project-card{% if project.screenshots %} project-card--with-shots{% endif %}">
+      {% if project.screenshots %}<div class="project-content">{% endif %}
       {% if project.image %}
       <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="project-img" />
       {% endif %}
@@ -174,7 +213,7 @@ layout: null
       </div>
       {% if project.screenshots %}
       </div>
-      <div class="project-shots{% if project.screenshot_inset %} project-shots--single{% endif %}">
+      <div class="project-shots{% if project.screenshot_inset %} project-shots--single{% endif %}{% if project.screenshot_overlay %} project-shots--overlay{% endif %}">
         {% for shot in project.screenshots %}
         <img src="{{ shot | relative_url }}" alt="{{ project.name }} screenshot" />
         {% endfor %}
@@ -183,35 +222,34 @@ layout: null
     </div>
     {% endfor %}
 
-    <!-- iOS Apps -->
-    <h3 class="subsection-heading">iOS Apps</h3>
-    <div class="apps-grid">
+  </div>
+</section>
 
-      <div class="card app-card">
-        <img src="{{ '/assets/img/app-aera.jpg' | relative_url }}" alt="Aera app icon" class="app-icon" />
-        <div class="project-name">Aera: Calm Breathing</div>
-        <p class="project-desc">Most breathing apps are too complicated to use mid-panic attack. I designed Aera in Figma around one principle: radical simplicity. Every decision came back to one question: would someone in a panic actually use this without being more stressed?</p>
-        <div class="project-links">
-          <a href="https://apps.apple.com/us/app/aera-calm-breathing/id6766367179" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store
-          </a>
+<!-- ── Experience ───────────────────────────────────────── -->
+<section id="experience">
+  <div class="wrapper">
+    <h2 class="section-heading"><span class="section-num">02</span>Experience</h2>
+    {% for job in site.data.experience %}
+    <div class="card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">{{ job.role }}</div>
+          <div class="exp-company">{{ job.company }}</div>
         </div>
+        <span class="exp-period">{{ job.period }}</span>
       </div>
-
-      <div class="card app-card">
-        <img src="{{ '/assets/img/app-tidemark.jpg' | relative_url }}" alt="Tidemark app icon" class="app-icon" />
-        <div class="project-name">Tidemark: Hydration Guide</div>
-        <p class="project-desc">A personal hydration companion that allows users to get guidance on their hydration needs throughout the day, instead of repeatedly tracking their every glass of water.</p>
-        <div class="project-links">
-          <a href="https://apps.apple.com/us/app/tidemark-hydration-guide/id6772892443" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store
-          </a>
-        </div>
-      </div>
-
+      {% if job.bullets %}
+      <ul class="exp-bullets">
+        {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
+      </ul>
+      {% elsif job.description %}
+      <p class="exp-desc">{{ job.description }}</p>
+      {% endif %}
+      {% if job.tags %}
+      <div class="tags">{% for tag in job.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+      {% endif %}
     </div>
+    {% endfor %}
   </div>
 </section>
 

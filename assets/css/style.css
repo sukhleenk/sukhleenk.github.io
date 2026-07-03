@@ -414,6 +414,66 @@ section {
   border-radius: 8px;
 }
 
+/* Overlay layout: large web screenshot with a phone floating on top */
+.project-shots--overlay {
+  position: relative;
+  width: clamp(430px, 40vw, 560px);
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+.project-shots--overlay img {
+  flex: none;
+  animation: shot-web-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+/* Web screenshot: fills the panel, slight radius, soft depth */
+.project-shots--overlay img:first-child {
+  width: 100%;
+  height: auto;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.13);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Phone: smaller, padded from the edges, floating above the web shot */
+.project-shots--overlay img:last-child {
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.2rem;
+  width: 33%;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  filter: drop-shadow(0 16px 28px rgba(15, 23, 42, 0.34));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: shot-phone-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both,
+             shot-phone-float 6s ease-in-out 0.95s infinite;
+}
+.project-card--with-shots:hover .project-shots--overlay img:first-child {
+  transform: scale(1.015);
+}
+.project-card--with-shots:hover .project-shots--overlay img:last-child {
+  transform: translateY(-9px) scale(1.03);
+  animation-play-state: paused, paused;
+}
+@keyframes shot-web-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shot-phone-rise {
+  from { opacity: 0; transform: translateY(26px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes shot-phone-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-shots--overlay img { animation: none; }
+}
+
 .project-img {
   width: 100%;
   border-radius: 5px;

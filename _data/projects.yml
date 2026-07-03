@@ -1,28 +1,32 @@
 # _data/projects.yml
-# Set featured: true to show a project in the Featured Projects section.
-# featured projects appear first and get a larger card.
+# category: "apps" — consumer-facing apps (shown in Apps subsection)
+# category: "dev-tools" — developer & research tools
 
 - name: "Paletto"
-  featured: true
+  category: "commercial-apps"
   description: "Full-stack SaaS for artists to manage commissions, projects, inventory, and finances, built web-first with Next.js and Supabase, alongside a cross-platform Expo mobile app. Designed in Figma across web and iOS so that it never gets in the way of the creative process. Iterated on the dashboard layout and navigation flow based on early user feedback, simplifying the information hierarchy to reduce the number of taps needed to log a session or track a commission."
   tags: [TypeScript, Next.js, React, Node.js, PostgreSQL, Supabase, Tailwind CSS, Vercel]
   github: ""
   live: "https://mypaletto.vercel.app"
+  screenshot_overlay: true
   screenshots:
-    - "assets/img/paletto_home.png"
-    - "assets/img/paletto_streaks.png"
+    - "assets/img/paletto-web.png"
+    - "assets/img/paletto-ios.png"
 
-- name: "API Latency Monitor"
-  featured: true
-  description: "A Python CLI tool published on PyPI that monitors HTTP endpoints for latency degradation, with full test coverage across the HTTP engine, database layer, and formatter. Sends notifications to Telegram when important latency degradation events occur. Inspired by wanting a simple, zero-config tool for tracking endpoint health without the setup overhead of Prometheus, Grafana, or a full APM stack."
-  tags: [Python, Click, Requests, PyYAML, SQLite, pytest, twine, build, Docker]
-  github: "https://github.com/sukhleenk/API-Latency-Monitor"
-  live: "https://pypi.org/project/api-latency-monitor/"
-  screenshots:
-    - "assets/img/alm_cli.png"
+- name: "Aera: Calm Breathing"
+  category: "commercial-apps"
+  app_icon: "assets/img/app-aera.jpg"
+  description: "Most breathing apps are too complicated to use mid-panic attack. I designed Aera in Figma around one principle: radical simplicity. Every decision came back to one question: would someone in a panic actually use this without being more stressed?"
+  live: "https://apps.apple.com/us/app/aera-calm-breathing/id6766367179"
+
+- name: "Tidemark: Hydration Guide"
+  category: "commercial-apps"
+  app_icon: "assets/img/app-tidemark.jpg"
+  description: "A personal hydration companion that allows users to get guidance on their hydration needs throughout the day, instead of repeatedly tracking their every glass of water."
+  live: "https://apps.apple.com/us/app/tidemark-hydration-guide/id6772892443"
 
 - name: "Sift"
-  featured: true
+  category: "dev-tools"
   description: "A macOS/Linux menu bar app with 12 active users that fetches and summarizes ArXiv papers using on-device transformer models and a local NLP pipeline for semantic grouping and ranking. Iteratively updating and improving the app based on real researcher feedback."
   tags: [Python, SQLite, Huggingface Transformers, PyTorch, Scikit-learn, Numpy, Rumps, WebKit]
   github: "https://github.com/sukhleenk/sift"
@@ -30,3 +34,12 @@
   screenshot_inset: true
   screenshots:
     - "assets/img/sift.png"
+
+- name: "API Latency Monitor"
+  category: "dev-tools"
+  description: "A Python CLI tool published on PyPI that monitors HTTP endpoints for latency degradation, with full test coverage across the HTTP engine, database layer, and formatter. Sends notifications to Telegram when important latency degradation events occur. Inspired by wanting a simple, zero-config tool for tracking endpoint health without the setup overhead of Prometheus, Grafana, or a full APM stack."
+  tags: [Python, Click, Requests, PyYAML, SQLite, pytest, twine, build, Docker]
+  github: "https://github.com/sukhleenk/API-Latency-Monitor"
+  live: "https://pypi.org/project/api-latency-monitor/"
+  screenshots:
+    - "assets/img/alm_cli.png"
