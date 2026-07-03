@@ -28,7 +28,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; background: var(--paper); }
 
 body {
   font-family: var(--body);
@@ -36,7 +36,10 @@ body {
   color: var(--ink);
   line-height: 1.65;
   font-size: 1.02rem;
+  /* clip, not hidden: hidden makes body its own scroller on iOS Safari,
+     which turns the browser bars opaque white */
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection { background: var(--gold); color: var(--ink); }
