@@ -3,8 +3,9 @@
 - degree: "B.S. Computer Science"
   school: "University of Mississippi"
   period: "2020 – 2024"
-  gpa: "3.7 / 4.0"     
-  honours: "Chancellor's List | Outstanding Student in Computer Science"
+  gpa: "3.7 / 4.0"
+  honours: "Chancellor’s List · Outstanding Student in Computer Science"
+  logo: "assets/img/university-logo.webp"
   coursework:
     - Data Structures & Algorithms
     - Operating Systems

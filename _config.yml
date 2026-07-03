@@ -4,40 +4,40 @@
 
 # Basic info
 name:     "Sukhleen Kaur"
-title:    "Software Developer"
-subtitle: "Software Engineer • Salt Lake City, UT • Open to Work"
-
+title:    "Software Engineer & Artist"
 location: "Salt Lake City, UT"
+availability: "open to work"
 email:    "sukhleenk1113@gmail.com"
 
-# Bio — shown in the card right under your name (plain text or basic HTML)
+# Meta description for search engines
+description: "Portfolio of Sukhleen Kaur, a software engineer and artist in Salt Lake City. Full-stack web, iOS, and Python. Open to work."
+
+# Bio — the paragraph under your name in the hero
 bio: >
-  Software engineer with 2 years of industry experience working across a wide range of technologies, from backend services and data pipelines to full-stack web and mobile applications. I enjoy building my own tools to solve real problems, pick up new tech, and share useful things with others. Open to software development roles in the Salt Lake City area or remote.
+  Two years of industry experience across backend services, data pipelines,
+  and full-stack web and mobile apps, plus a shelf of shipped side projects
+  with real users. I sweat the details in both my code and my interfaces,
+  because I’m an artist when I’m not an engineer (and usually both at once).
+
+# Words that cycle in the hero ("I build ___")
+rotator_words:
+  - full-stack apps
+  - iOS apps
+  - dev tools
+  - data pipelines
+  - things with care
+
+# Scrolling ticker under the hero
+marquee:
+  - open to software roles
+  - salt lake city or remote
+  - full-stack · iOS · python
+  - 2 apps on the App Store
 
 # Social links — comment out any you don't want shown
 social:
   github:   "https://github.com/sukhleenk"
   linkedin: "https://linkedin.com/in/sukhleenkaur13"
-  # twitter: "https://twitter.com/yourusername"
-
-# Resume — path to your PDF in assets/ or a full URL; set to "" to hide
-resume: ""   # e.g. "assets/resume.pdf"  or  "https://example.com/resume.pdf"
-
-# Floating background code snippets
-code_snippets:
-  - "const solve = (problem) => {};"
-  - "git commit -m 'feat: ship it'"
-  - "O(log n)"
-  - "SELECT * FROM dreams;"
-  - "docker run --rm -it life"
-  - "npm run build"
-  - "def hello_world():"
-  - "async/await"
-  - "{ ...spread }"
-  - "while(learning) { grow(); }"
-  - "sudo make me a sandwich"
-  - "pip install confidence"
-  - "import { passion } from 'life';"
 
 # Jekyll settings — don't change these
 markdown:  kramdown

@@ -1,51 +1,44 @@
 ---
 layout: null
---- 
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="{{ site.name }} — {{ site.title }}. {{ site.bio | strip_html | truncate: 160 }}" />
-  <title>{{ site.name }}</title>
+  <meta name="description" content="{{ site.description }}" />
+  <title>{{ site.name }} · {{ site.title }}</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
-  <!-- Prevent flash of wrong theme — default is light -->
-  <script>
-    (function () {
-      var saved = localStorage.getItem('theme');
-      if (saved === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-    }());
-  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='38' cy='42' r='30' fill='%23E8604C'/><circle cx='62' cy='58' r='30' fill='%233E8E7E' fill-opacity='0.85'/></svg>" />
 </head>
 <body>
- 
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="wash wash--coral" aria-hidden="true"></div>
+<div class="wash wash--teal" aria-hidden="true"></div>
+<div class="wash wash--gold" aria-hidden="true"></div>
+
 <!-- ── Nav ─────────────────────────────────────────────── -->
-<nav id="main-nav">
+{% assign name_parts = site.name | split: " " %}
+<nav id="nav">
   <div class="nav-inner">
-    <a href="#about" class="nav-brand">{{ site.name | split: " " | first }}<span>.</span></a>
-    <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="#projects">Projects</a></li>
+    <a href="#top" class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>{{ name_parts | first }}
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#skills">Skills</a></li>
-      {% if site.resume and site.resume != "" %}
-      <li><a href="{{ site.resume | relative_url }}" target="_blank" class="nav-cta">Resume ↗</a></li>
-      {% endif %}
     </ul>
     <div class="nav-right">
-      <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
-        <!-- sun (shown in dark mode) -->
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <!-- moon (shown in light mode) -->
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <a href="mailto:{{ site.email }}" class="btn btn--small">Say hello</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -53,229 +46,157 @@ layout: null
   </div>
 </nav>
 
-<!-- ── Profile ──────────────────────────────────────────── -->
-<header id="about">
-  <div class="wrapper">
-    <div class="profile-grid">
-
-      <!-- Photo -->
-      <div class="photo-col">
-        <img src="{{ '/assets/img/photo.jpg' | relative_url }}" alt="{{ site.name }}" class="profile-photo" />
-        <!-- <div class="profile-photo-placeholder" aria-hidden="true">👩‍💻</div> -->
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<header id="top" class="hero">
+  <div class="wrapper hero-grid">
+    <div class="hero-copy">
+      <p class="hero-kicker reveal-load" style="--d:0">
+        <span class="kicker-line" aria-hidden="true"></span>{{ site.location }} &middot; {{ site.availability }}
+      </p>
+      <h1 class="hero-name reveal-load" style="--d:1">
+        {{ name_parts | first }}<br /><em>{{ name_parts | last }}</em>
+        <svg class="squiggle" viewBox="0 0 320 24" aria-hidden="true"><path d="M4 16 C 40 4, 70 22, 105 12 S 175 4, 210 14 S 285 20, 316 8" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
+      </h1>
+      <p class="hero-tag reveal-load" style="--d:2">
+        Software engineer with an <em>eye&nbsp;for&nbsp;design</em>.
+        I build <span class="rotator-wrap"><span id="rotator" class="rotator" data-words="{{ site.rotator_words | join: '|' }}">{{ site.rotator_words | first }}</span></span>
+      </p>
+      <p class="hero-bio reveal-load" style="--d:3">{{ site.bio }}</p>
+      <div class="hero-actions reveal-load" style="--d:4">
+        <a class="btn" href="mailto:{{ site.email }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          {{ site.email }}
+        </a>
+        {% if site.social.github %}<a class="btn btn--ghost" href="{{ site.social.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+        {% if site.social.linkedin %}<a class="btn btn--ghost" href="{{ site.social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
       </div>
+    </div>
 
-      <!-- Info -->
-      <div class="info-col">
-        <p class="greeting">Hello, I'm</p>
-        <h1>{{ site.name }}</h1>
-        <p class="profile-subtitle">{{ site.subtitle }}</p>
-        <p class="profile-bio">{{ site.bio }}</p>
-        <div class="contact-row">
-          <a href="mailto:{{ site.email }}" class="contact-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            {{ site.email }}
-          </a>
-          {% if site.social.github %}
-          <a href="{{ site.social.github }}" class="contact-link" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            GitHub
-          </a>
-          {% endif %}
-          {% if site.social.linkedin %}
-          <a href="{{ site.social.linkedin }}" class="contact-link" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
-          {% endif %}
-          {% if site.social.twitter %}
-          <a href="{{ site.social.twitter }}" class="contact-link" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-            Twitter
-          </a>
-          {% endif %}
-          {% if site.resume and site.resume != "" %}
-          <a href="{{ site.resume | relative_url }}" class="contact-link" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Resume
-          </a>
-          {% endif %}
-        </div>
+    <div class="hero-photo-col reveal-load" style="--d:2">
+      <div class="photo-frame">
+        <img src="assets/img/photo.jpg" alt="{{ site.name }}" class="hero-photo" />
+        <span class="sticker sticker--star" aria-hidden="true">✦</span>
+        <span class="sticker sticker--flower" aria-hidden="true">✿</span>
+        <span class="swatch-card" aria-hidden="true">
+          <i style="--c:#E8604C"></i><i style="--c:#F2A93B"></i><i style="--c:#3E8E7E"></i><i style="--c:#7C77B9"></i>
+        </span>
       </div>
-
     </div>
   </div>
 </header>
 
-<!-- ── Projects ───────────────────────────────────────────── -->
-<section id="projects">
-  <div class="wrapper">
-    <h2 class="section-heading"><span class="section-num">01</span>Projects</h2>
+<!-- ── Marquee ──────────────────────────────────────────── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {% for i in (1..2) %}{% for item in site.marquee %}<span>{{ item }}</span><i class="dot {% cycle 'd1', 'd2', 'd3', 'd4' %}"></i>{% endfor %}{% endfor %}
+  </div>
+</div>
 
-    <!-- Apps -->
-    <h3 class="subsection-heading">Commercial Apps</h3>
-    {% assign app_projects = site.data.projects | where: "category", "commercial-apps" %}
-    {% for project in app_projects %}
-      {% unless project.app_icon %}
-    <div class="card project-card{% if project.screenshots %} project-card--with-shots{% endif %}">
-      {% if project.screenshots %}<div class="project-content">{% endif %}
-      {% if project.image %}
-      <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="project-img" />
-      {% endif %}
-      <div class="project-name">{{ project.name }}</div>
-      {% if project.bullets %}
-      <ul class="exp-bullets">
-        {% for bullet in project.bullets %}<li>{{ bullet }}</li>{% endfor %}
-      </ul>
-      {% elsif project.description %}
-      <p class="project-desc">{{ project.description }}</p>
-      {% endif %}
-      {% if project.tags %}
-      <div class="tags">{% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
-      {% endif %}
-      <div class="project-links">
-        {% if project.github and project.github != "" %}
-        <a href="{{ project.github }}" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          View Code
-        </a>
-        {% endif %}
-        {% if project.live and project.live != "" %}
-        <a href="{{ project.live }}" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Project
-        </a>
-        {% endif %}
-      </div>
-      {% if project.screenshots %}
-      </div>
-      <div class="project-shots{% if project.screenshot_inset %} project-shots--single{% endif %}{% if project.screenshot_overlay %} project-shots--overlay{% endif %}">
-        {% for shot in project.screenshots %}
-        <img src="{{ shot | relative_url }}" alt="{{ project.name }} screenshot" />
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
-      {% endunless %}
-    {% endfor %}
-    <div class="apps-grid">
-    {% for project in app_projects %}
-      {% if project.app_icon %}
-      <div class="card app-card">
-        <img src="{{ project.app_icon | relative_url }}" alt="{{ project.name }} icon" class="app-icon" />
-        <div class="project-name">{{ project.name }}</div>
-        <p class="project-desc">{{ project.description }}</p>
+<!-- ── Work ─────────────────────────────────────────────── -->
+<main>
+<section id="work">
+  <div class="wrapper">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--coral">Things I&rsquo;ve made</span></h2>
+    <p class="section-sub reveal">Products I design, build, ship, and support end-to-end, with real users and real feedback loops.</p>
+
+    {% for project in site.data.projects.featured %}
+    <article class="feature-card reveal">
+      <div class="feature-copy">
+        <p class="eyebrow">{{ project.eyebrow }}</p>
+        <h3 class="project-name">{{ project.name }}</h3>
+        <p>{{ project.description }}</p>
+        <div class="tags">{% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
         <div class="project-links">
-          {% if project.live and project.live != "" %}
-          <a href="{{ project.live }}" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store
-          </a>
-          {% endif %}
+          {% for link in project.links %}<a href="{{ link.url }}" target="_blank" rel="noopener" class="link-arrow">{{ link.label }}</a>{% endfor %}
         </div>
       </div>
-      {% endif %}
-    {% endfor %}
-    </div>
-
-    <!-- Developer & Research Tools -->
-    <h3 class="subsection-heading">Developer &amp; Research Tools</h3>
-    {% assign dev_tools = site.data.projects | where: "category", "dev-tools" %}
-    {% for project in dev_tools %}
-    <div class="card project-card{% if project.screenshots %} project-card--with-shots{% endif %}">
-      {% if project.screenshots %}<div class="project-content">{% endif %}
-      {% if project.image %}
-      <img src="{{ project.image | relative_url }}" alt="{{ project.name }}" class="project-img" />
-      {% endif %}
-      <div class="project-name">{{ project.name }}</div>
-      {% if project.bullets %}
-      <ul class="exp-bullets">
-        {% for bullet in project.bullets %}<li>{{ bullet }}</li>{% endfor %}
-      </ul>
-      {% elsif project.description %}
-      <p class="project-desc">{{ project.description }}</p>
-      {% endif %}
-      {% if project.tags %}
-      <div class="tags">{% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
-      {% endif %}
-      <div class="project-links">
-        {% if project.github and project.github != "" %}
-        <a href="{{ project.github }}" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          View Code
-        </a>
-        {% endif %}
-        {% if project.live and project.live != "" %}
-        <a href="{{ project.live }}" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Demo
-        </a>
-        {% endif %}
+      <div class="feature-shots">
+        <img src="{{ project.shot_web }}" alt="{{ project.name }} web dashboard" class="shot shot--web tape" />
+        <img src="{{ project.shot_phone }}" alt="{{ project.name }} iOS app" class="shot shot--phone tape" />
       </div>
-      {% if project.screenshots %}
-      </div>
-      <div class="project-shots{% if project.screenshot_inset %} project-shots--single{% endif %}{% if project.screenshot_overlay %} project-shots--overlay{% endif %}">
-        {% for shot in project.screenshots %}
-        <img src="{{ shot | relative_url }}" alt="{{ project.name }} screenshot" />
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
+    </article>
     {% endfor %}
 
+    <div class="app-duo">
+      {% for app in site.data.projects.apps %}
+      <article class="app-card reveal" style="--tilt:{{ app.tilt }}">
+        <div class="app-card-head">
+          <img src="{{ app.icon }}" alt="{{ app.name }} app icon" class="app-icon" />
+          <div>
+            <h3 class="project-name">{{ app.name }} <span class="proj-sub">{{ app.subtitle }}</span></h3>
+            <p class="eyebrow">{{ app.eyebrow }}</p>
+          </div>
+        </div>
+        <p>{{ app.description }}</p>
+        <div class="project-links">
+          {% for link in app.links %}<a href="{{ link.url }}" target="_blank" rel="noopener" class="link-arrow">{{ link.label }}</a>{% endfor %}
+        </div>
+        {% if app.screenshot %}
+        <img src="{{ app.screenshot }}" alt="{{ app.name }} screenshot" class="app-screenshot" />
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+
+    <h3 class="subsection-title reveal">Developer &amp; research tools</h3>
+
+    {% for tool in site.data.projects.tools %}
+    {% assign flip = forloop.index | modulo: 2 %}
+    <article class="tool-card{% if flip == 0 %} tool-card--flip{% endif %} reveal">
+      <div class="tool-copy">
+        <h3 class="project-name">{{ tool.name }}</h3>
+        <p>{{ tool.description }}</p>
+        <div class="tags">{% for tag in tool.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+        <div class="project-links">
+          {% for link in tool.links %}<a href="{{ link.url }}" target="_blank" rel="noopener" class="link-arrow">{{ link.label }}</a>{% endfor %}
+        </div>
+      </div>
+      <div class="tool-shot"><img src="{{ tool.image }}" alt="{{ tool.name }} screenshot" class="tape" /></div>
+    </article>
+    {% endfor %}
   </div>
 </section>
 
 <!-- ── Experience ───────────────────────────────────────── -->
 <section id="experience">
   <div class="wrapper">
-    <h2 class="section-heading"><span class="section-num">02</span>Experience</h2>
-    {% for job in site.data.experience %}
-    <div class="card">
-      <div class="exp-header">
-        <div>
-          <div class="exp-role">{{ job.role }}</div>
-          <div class="exp-company">{{ job.company }}</div>
+    <h2 class="section-title reveal"><span class="title-brush title-brush--teal">Where I&rsquo;ve worked</span></h2>
+
+    <div class="timeline">
+      {% for job in site.data.experience %}
+      <article class="tl-item reveal">
+        <span class="tl-dot" style="--c:{{ job.color }}"></span>
+        <div class="tl-head">
+          <h3>{{ job.role }} <span class="tl-co">&middot; {{ job.company }}</span></h3>
+          <span class="tl-period">{{ job.period }}</span>
         </div>
-        <span class="exp-period">{{ job.period }}</span>
-      </div>
-      {% if job.bullets %}
-      <ul class="exp-bullets">
-        {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
-      </ul>
-      {% elsif job.description %}
-      <p class="exp-desc">{{ job.description }}</p>
-      {% endif %}
-      {% if job.tags %}
-      <div class="tags">{% for tag in job.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
-      {% endif %}
+        <ul>
+          {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
+        </ul>
+        <div class="tags">{% for tag in job.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+      </article>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </section>
 
 <!-- ── Education ────────────────────────────────────────── -->
 <section id="education">
   <div class="wrapper">
-    <h2 class="section-heading"><span class="section-num">03</span>Education</h2>
+    <h2 class="section-title reveal"><span class="title-brush title-brush--gold">Education</span></h2>
     {% for edu in site.data.education %}
-    <div class="card edu-card">
-      <div class="edu-main">
-        <div class="edu-degree">{{ edu.degree }}</div>
-        <div class="edu-school">
-          {{ edu.school }}{% if edu.period %} &middot; {{ edu.period }}{% endif %}{% if edu.gpa and edu.gpa != "" %} &middot; GPA {{ edu.gpa }}{% endif %}
-        </div>
-        {% if edu.honours and edu.honours != "" %}
-        <p class="edu-honours">{{ edu.honours }}</p>
-        {% endif %}
+    <article class="edu-card reveal">
+      <div>
+        <h3>{{ edu.degree }}</h3>
+        <p class="edu-meta">{{ edu.school }} &middot; {{ edu.period }}{% if edu.gpa %} &middot; GPA {{ edu.gpa }}{% endif %}</p>
+        {% if edu.honours %}<p class="edu-honours">{{ edu.honours }}</p>{% endif %}
         {% if edu.coursework %}
-        <p class="coursework-label">Relevant Coursework</p>
+        <p class="eyebrow" style="margin-top:1.2rem">Relevant coursework</p>
         <div class="tags">{% for course in edu.coursework %}<span class="tag">{{ course }}</span>{% endfor %}</div>
         {% endif %}
       </div>
-      <div class="edu-logo-col">
-        <img src="{{ '/assets/img/university-logo.webp' | relative_url }}" alt="{{ edu.school }} logo" class="edu-logo" />
-      </div>
-    </div>
+      <img src="{{ edu.logo }}" alt="{{ edu.school }} logo" class="edu-logo" />
+    </article>
     {% endfor %}
   </div>
 </section>
@@ -283,31 +204,51 @@ layout: null
 <!-- ── Skills ───────────────────────────────────────────── -->
 <section id="skills">
   <div class="wrapper">
-    <h2 class="section-heading"><span class="section-num">04</span>Technical Skills</h2>
-    <div class="skills-rows">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--violet">Skills</span></h2>
+    <p class="section-sub reveal">The palette I work from.</p>
+
+    <div class="skill-rows">
       {% for group in site.data.skills %}
-      <div class="skill-row">
-        <span class="skill-row-label">{{ group.category }}</span>
-        <div class="skill-pills">
-          {% for skill in group.items %}<span class="skill-pill">{{ skill }}</span>{% endfor %}
-        </div>
+      <div class="skill-row reveal">
+        <span class="skill-label"><i class="chip" style="--c:{{ group.color }}"></i>{{ group.category }}</span>
+        <div class="pills">{% for skill in group.items %}<span class="pill">{{ skill }}</span>{% endfor %}</div>
       </div>
       {% endfor %}
+    </div>
+
+    <div class="offhours reveal">
+      <p class="eyebrow">Off hours</p>
+      <p class="offhours-line">
+        <span>🎨 painting</span><span>🧶 crocheting</span><span>🥾 hiking</span><span>🌱 gardening</span><span>🔓 open source</span>
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ── Footer ────────────────────────────────────────────── -->
+<!-- ── Contact ──────────────────────────────────────────── -->
+<section id="contact">
+  <div class="wrapper contact-inner reveal">
+    <h2 class="contact-title">Have a role in mind?<br /><em>Let&rsquo;s talk.</em>
+      <svg class="squiggle squiggle--contact" viewBox="0 0 320 24" aria-hidden="true"><path d="M4 16 C 40 4, 70 22, 105 12 S 175 4, 210 14 S 285 20, 316 8" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
+    </h2>
+    <p class="contact-sub">I&rsquo;m looking for software roles in Salt Lake City or remote. If you think we&rsquo;d work well together, my inbox is open.</p>
+    <div class="hero-actions">
+      <a class="btn btn--big" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      {% if site.social.github %}<a class="btn btn--ghost" href="{{ site.social.github }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+      {% if site.social.linkedin %}<a class="btn btn--ghost" href="{{ site.social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+    </div>
+  </div>
+</section>
+</main>
+
 <footer>
-  <div class="wrapper">
-    <span>© 2026 {{ site.name }}</span>
-    <span class="footer-sep">·</span>
-    <span>Software Developer</span>
-    <span class="footer-sep">·</span>
-    <span>Built with Jekyll</span>
+  <div class="wrapper footer-inner">
+    <span>© <span id="year">2026</span> {{ site.name }}</span>
+    <span class="footer-dots" aria-hidden="true"><i style="--c:#E8604C"></i><i style="--c:#F2A93B"></i><i style="--c:#3E8E7E"></i><i style="--c:#7C77B9"></i></span>
+    <span>made with ♡</span>
   </div>
 </footer>
 
-<script src="{{ '/assets/js/background.js' | relative_url }}"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

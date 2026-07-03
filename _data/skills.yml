@@ -1,19 +1,22 @@
 # _data/skills.yml
+# "color" sets the little paint chip next to each category name.
 
 - category: "Languages"
-  items: [Python, Java, "JavaScript/Typescript", "Swift", "C#", R, SQL, "Bash/Shell", "HTML/CSS", "LaTeX"]
+  color: "#E8604C"
+  items: [Python, Java, "JavaScript / TypeScript", Swift, "C#", R, SQL, "Bash / Shell", "HTML / CSS", LaTeX]
 
 - category: "Frameworks"
+  color: "#F2A93B"
   items: [React, React Native, "Next.js", "Node.js", Express, Django, "Tailwind CSS", "REST APIs", SwiftUI, ".NET MAUI"]
 
 - category: "Databases"
+  color: "#3E8E7E"
   items: [MS SQL Server, PostgreSQL, MySQL, MongoDB, Redis, SQLite, Supabase]
 
-- category: "ML/AI"
-  items: [PyTorch, scikit-learn, Keras, OpenCV, Huggingface Transformers, Numpy, Pandas]
+- category: "ML / AI"
+  color: "#7C77B9"
+  items: [PyTorch, scikit-learn, Keras, OpenCV, Huggingface Transformers, NumPy, Pandas]
 
 - category: "Tools & DevOps"
-  items: [Git, Docker, AWS, Kubernetes, Figma, Adobe XD, Linux, "CI/CD (Github Actions)", Dynatrace, Firebase]
-
-- category: "Interests"
-  items: ["Open Source", "Art", "Crocheting", "Hiking", "Gardening"]
+  color: "#D2649A"
+  items: [Git, Docker, AWS, Kubernetes, Figma, Adobe XD, Linux, "CI/CD (GitHub Actions)", Dynatrace, Firebase]
