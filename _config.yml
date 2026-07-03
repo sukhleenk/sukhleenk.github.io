@@ -9,6 +9,9 @@ location: "Salt Lake City, UT"
 availability: "open to work"
 email:    "sukhleenk1113@gmail.com"
 
+# Site URL (used for the social share card)
+url: "https://sukhleenk.github.io"
+
 # Meta description for search engines
 description: "Portfolio of Sukhleen Kaur, a software engineer and artist in Salt Lake City. Full-stack web, iOS, and Python. Open to work."
 
