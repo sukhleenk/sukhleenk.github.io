@@ -28,7 +28,7 @@ featured:
 
 apps:
   - name: "Aera"
-    subtitle: "Calm Breathing"
+    # subtitle: "Calm Breathing"
     eyebrow: "iOS · on the App Store"
     icon: "assets/img/app-aera.jpg"
     tilt: "-0.6deg"
@@ -43,7 +43,7 @@ apps:
         url: "https://apps.apple.com/us/app/aera-calm-breathing/id6766367179"
 
   - name: "Tidemark"
-    subtitle: "Hydration Guide"
+    # subtitle: "Hydration Guide"
     eyebrow: "iOS · on the App Store"
     icon: "assets/img/app-tidemark.jpg"
     tilt: "0.6deg"
@@ -55,6 +55,19 @@ apps:
     links:
       - label: "App Store"
         url: "https://apps.apple.com/us/app/tidemark-hydration-guide/id6772892443"
+
+  - name: "Rue"
+    # subtitle: "Period Tracker"
+    eyebrow: "iOS · on the App Store"
+    icon: "assets/img/rue.png"
+    tilt: "-0.5deg"
+    screenshot: "assets/img/rue.png"
+    description: >
+      Period apps assume a textbook 28-day cycle, putting everyone in the same cluster. Rue is a period tracker that tells you what&rsquo;s normal for <em>you</em>, not a statistical average.
+      It allows logging of symptoms, mood, sleep, and flow&mdash, so you can be free from stress of wondering if your cycle is normal.
+    links:
+      - label: "App Store"
+        url: "https://apps.apple.com/us/app/rue-period-cycle-tracker/id6782203656"
 
 tools:
   - name: "Sift"

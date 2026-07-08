@@ -321,7 +321,7 @@ section { padding: 88px 0 30px; }
 /* ── project cards ─────────────────────────────────────── */
 .project-name {
   font-family: var(--display); font-size: 1.7rem; font-weight: 600;
-  margin-bottom: 10px; letter-spacing: -0.01em;
+  margin-bottom: 5px; letter-spacing: -0.01em;
 }
 .proj-sub { font-size: 1rem; font-weight: 400; font-style: italic; color: var(--ink-soft); }
 
@@ -380,8 +380,8 @@ section { padding: 88px 0 30px; }
 }
 .tape:hover { transform: rotate(0deg) scale(1.02); box-shadow: 7px 9px 20px rgba(43,39,36,.22); z-index: 2; }
 
-/* app duo */
-.app-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+/* app trio */
+.app-duo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 .app-card {
   background: var(--card);
   border: 2px solid var(--ink); border-radius: var(--radius);
@@ -586,6 +586,10 @@ footer {
 }
 
 /* ── responsive ────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .app-duo { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 920px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-photo-col { order: -1; }
