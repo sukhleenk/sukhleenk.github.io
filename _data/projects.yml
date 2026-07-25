@@ -70,6 +70,18 @@ apps:
         url: "https://apps.apple.com/us/app/rue-period-cycle-tracker/id6782203656"
 
 tools:
+  - name: "Hublands"
+    description: >
+      An open-source interactive atlas of the Hugging Face Hub. Maps models
+      and datasets as a browsable survey chart where position encodes semantic 
+      similarity. An offline Github Actions pipeline fetches and embeds every repo. 
+      The browser renders the GPU points with deck.gl. Born from aiding researchers 
+      to see the shape of the Hub instead of searching for names you already know.
+    tags: [Next.js, TypeScript, deck.gl, WebGL, Python, UMAP, sentence-transformers, Hugging Face]
+    image: "assets/img/hublands.png"
+    links:
+      - label: "Live website"
+        url: "https://hublands.vercel.app"
   - name: "Sift"
     description: >
       A macOS/Linux menu-bar app with 12 active users that fetches and
