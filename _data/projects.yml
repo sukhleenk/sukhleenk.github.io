@@ -82,6 +82,19 @@ tools:
     links:
       - label: "Live website"
         url: "https://hublands.vercel.app"
+  - name: "Spool"
+    description: >
+      A native macOS menu-bar app, built collaboratively, that turns rough idea
+      dumps into structured markdown. Everything runs on-device against a local
+      OpenAI-compatible model server, spun up only when a document is queued and
+      evicted from memory once the work is done. Drafts arrive by file picker or a watched folder. Ships
+      as a single SPM executable and fully open-source.
+    tags: [Swift, SwiftUI, SPM, macOS, Ollama, Local LLMs]
+    image: "assets/img/spool.png"
+    links:
+      - label: "View code"
+        url: "https://github.com/soumildatta/spool"
+
   - name: "Sift"
     description: >
       A macOS/Linux menu-bar app with 12 active users that fetches and
