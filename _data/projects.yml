@@ -59,7 +59,7 @@ apps:
   - name: "Rue"
     # subtitle: "Period Tracker"
     eyebrow: "iOS · on the App Store"
-    icon: "assets/img/rue.png"
+    icon: "assets/img/rueicon.png"
     tilt: "-0.5deg"
     screenshot: "assets/img/rue.png"
     description: >
