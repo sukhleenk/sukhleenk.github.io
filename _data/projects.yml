@@ -83,8 +83,8 @@ tools:
     image: "assets/img/shipyard/main-light.png"
     image_dark: "assets/img/shipyard/main-dark.png"
     # one place for the version: the card button and shipyard/ page both read it
-    version: "1.0.0"
-    download: "downloads/Shipyard-1.0.0.dmg"
+    version: "1.0.1"
+    download: "downloads/Shipyard-1.0.1.dmg"
     links:
       - label: "See what it does"
         url: "shipyard/"

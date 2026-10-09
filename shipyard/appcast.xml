@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Shipyard</title>
+        <item>
+            <title>1.0.1</title>
+            <pubDate>Fri, 09 Oct 2026 17:49:46 -0600</pubDate>
+            <link>https://sukhleenk.github.io/shipyard/</link>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>Shipyard 1.0.1</h2>
+<ul>
+  <li>Shipyard now checks for updates on its own, once a day. When a new version is out you'll get a prompt to install it, and you can always check yourself from <b>Check for Updates…</b> in the menu or in Settings.</li>
+  <li>Updates are signed, so Shipyard only installs versions that really come from its developer.</li>
+</ul>
+]]></description>
+            <enclosure url="https://sukhleenk.github.io/downloads/Shipyard-1.0.1.dmg" length="2696371" type="application/octet-stream" sparkle:edSignature="s7A1YI9iJnvJDkEzvwb27SqOOdM5hnO4P6IEOntbc94bRrQOc5eRpf9YU+MdF6VD5b30ToeG93myJ/cLHDVtCA=="/>
+        </item>
+    </channel>
+</rss>

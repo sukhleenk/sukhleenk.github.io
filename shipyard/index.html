@@ -60,7 +60,8 @@ permalink: /shipyard/
       "Shows the starred pull request's test counts in the macOS menu bar",
       "Local tickets that suggest linking to a matching pull request",
       "Signs in with the GitHub CLI",
-      "Keyboard shortcuts for every action"
+      "Keyboard shortcuts for every action",
+      "Updates itself with signed Sparkle updates"
     ],
     "author": {
       "@type": "Person",
@@ -346,7 +347,7 @@ permalink: /shipyard/
       </div>
       <div class="hood-item reveal">
         <h3>Shipped like a real Mac app</h3>
-        <p>Hardened Runtime, signed with a Developer ID, notarized by Apple and stapled. One release script goes from source to a drag-to-install DMG, with Sparkle 2 ready for automatic updates.</p>
+        <p>Hardened Runtime, signed with a Developer ID, notarized by Apple and stapled. One release script goes from source to a drag-to-install DMG and publishes a Sparkle 2 update feed. Installed copies check it daily and only accept updates signed with the release key.</p>
       </div>
     </div>
   </div>
@@ -359,7 +360,7 @@ permalink: /shipyard/
       <img src="{{ img }}icon.png" alt="Shipyard app icon" class="sy-icon" width="112" height="112" loading="lazy" />
       <div>
         <h2>Get Shipyard <em>{{ app.version }}</em></h2>
-        <p class="sy-meta" style="margin:0 0 20px">Free &middot; macOS 14 or later &middot; signed &amp; notarized by Apple</p>
+        <p class="sy-meta" style="margin:0 0 20px">Free &middot; macOS 14 or later &middot; signed &amp; notarized by Apple &middot; updates itself</p>
         <a class="btn btn--big" href="{{ '/' | relative_url }}{{ app.download }}" download>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
           Download Shipyard-{{ app.version }}.dmg

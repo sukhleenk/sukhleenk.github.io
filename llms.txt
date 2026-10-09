@@ -12,7 +12,7 @@ sitemap: false
 ## Shipyard (macOS app)
 
 - [Shipyard for Mac]({{ site.url }}/shipyard/): {{ shipyard.description | strip_html | normalize_whitespace }}
-- [Download Shipyard {{ shipyard.version }} (.dmg)]({{ site.url }}/{{ shipyard.download }}): free, signed and notarized by Apple, runs on macOS 14 Sonoma or later on Apple silicon and Intel. Requires the GitHub CLI (`gh`) for sign-in.
+- [Download Shipyard {{ shipyard.version }} (.dmg)]({{ site.url }}/{{ shipyard.download }}): free, signed and notarized by Apple, runs on macOS 14 Sonoma or later on Apple silicon and Intel. Requires the GitHub CLI (`gh`) for sign-in. Installed copies update themselves (Sparkle), prompting when a new version is out.
 
 ## Products
 
