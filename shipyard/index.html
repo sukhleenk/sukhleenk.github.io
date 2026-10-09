@@ -11,16 +11,64 @@ permalink: /shipyard/
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#FBF6EC" />
-  <meta name="description" content="Shipyard is a native macOS menu-bar app that shows the CI test status of every GitHub pull request you're working on. Built by {{ site.name }}." />
-  <title>Shipyard · {{ site.name }}</title>
+  {% capture page_title %}Shipyard for Mac: GitHub pull request test status in your menu bar{% endcapture %}
+  {% capture page_desc %}Shipyard is a free, native macOS menu-bar app that tracks every GitHub pull request you're working on and shows its CI checks as failed, passed, queued and skipped. Signed and notarized, for macOS 14 or later.{% endcapture %}
+  <meta name="description" content="{{ page_desc }}" />
+  <title>{{ page_title }}</title>
+  <link rel="canonical" href="{{ site.url }}/shipyard/" />
   {% include theme-init.html %}
 
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ site.name }}" />
   <meta property="og:url" content="{{ site.url }}/shipyard/" />
-  <meta property="og:title" content="Shipyard · your PRs' test status in the menu bar" />
-  <meta property="og:description" content="A native macOS app that tracks your GitHub pull requests and their CI checks at a glance." />
-  <meta property="og:image" content="{{ site.url }}/assets/img/shipyard/main-light.png" />
+  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:description" content="{{ page_desc }}" />
+  <meta property="og:image" content="{{ site.url }}/assets/img/shipyard/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Shipyard app icon beside its menu bar popover showing 2 failed, 14 passed, 3 queued and 1 skipped checks" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ page_title }}" />
+  <meta name="twitter:description" content="{{ page_desc }}" />
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/shipyard/og-card.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Shipyard",
+    "alternateName": "Shipyard for Mac",
+    "description": {{ page_desc | jsonify }},
+    "url": "{{ site.url }}/shipyard/",
+    "downloadUrl": "{{ site.url }}/{{ app.download }}",
+    "softwareVersion": "{{ app.version }}",
+    "operatingSystem": "macOS 14.0 or later",
+    "applicationCategory": "DeveloperApplication",
+    "applicationSubCategory": "Menu bar utility",
+    "fileSize": "2.6MB",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "image": "{{ site.url }}/assets/img/shipyard/icon.png",
+    "screenshot": [
+      "{{ site.url }}/assets/img/shipyard/main-light.png",
+      "{{ site.url }}/assets/img/shipyard/popover.png",
+      "{{ site.url }}/assets/img/shipyard/detail-light.png"
+    ],
+    "featureList": [
+      "Finds every open GitHub pull request you authored, across all repositories",
+      "Groups CI checks into failed, passed, queued and skipped",
+      "Shows the starred pull request's test counts in the macOS menu bar",
+      "Local tickets that suggest linking to a matching pull request",
+      "Signs in with the GitHub CLI",
+      "Keyboard shortcuts for every action"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": {{ site.name | jsonify }},
+      "url": "{{ site.url }}/"
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

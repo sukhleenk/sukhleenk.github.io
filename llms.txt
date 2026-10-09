@@ -1,0 +1,31 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+{% assign shipyard = site.data.projects.tools | where: "name", "Shipyard" | first %}# {{ site.name }}
+
+> {{ site.description }}
+
+{{ site.bio | strip_html | normalize_whitespace }}
+
+## Shipyard (macOS app)
+
+- [Shipyard for Mac]({{ site.url }}/shipyard/): {{ shipyard.description | strip_html | normalize_whitespace }}
+- [Download Shipyard {{ shipyard.version }} (.dmg)]({{ site.url }}/{{ shipyard.download }}): free, signed and notarized by Apple, runs on macOS 14 Sonoma or later on Apple silicon and Intel. Requires the GitHub CLI (`gh`) for sign-in.
+
+## Products
+
+{% for p in site.data.projects.featured %}- [{{ p.name }}]({{ p.links[0].url }}): {{ p.description | strip_html | replace: "&rsquo;", "'" | replace: "&mdash;", "—" | normalize_whitespace }}
+{% endfor %}{% for p in site.data.projects.apps %}- [{{ p.name }}]({{ p.links[0].url }}) (iOS): {{ p.description | strip_html | replace: "&rsquo;", "'" | replace: "&mdash;", "—" | replace: "&mdash", "—" | normalize_whitespace }}
+{% endfor %}
+## Research and developer tools
+
+{% for p in site.data.projects.tools %}{% if p.name != "Shipyard" %}- [{{ p.name }}]({{ p.links[0].url }}): {{ p.description | strip_html | normalize_whitespace }}
+{% endif %}{% endfor %}
+## Contact
+
+- [Portfolio]({{ site.url }}/)
+- Email: {{ site.email }}
+- [GitHub]({{ site.social.github }})
+- [LinkedIn]({{ site.social.linkedin }})
