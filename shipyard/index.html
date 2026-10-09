@@ -1,0 +1,344 @@
+---
+layout: null
+permalink: /shipyard/
+---
+{% assign app = site.data.projects.tools | where: "name", "Shipyard" | first %}
+{% assign name_parts = site.name | split: " " %}
+{% capture img %}{{ '/assets/img/shipyard/' | relative_url }}{% endcapture %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FBF6EC" />
+  <meta name="description" content="Shipyard is a native macOS menu-bar app that shows the CI test status of every GitHub pull request you're working on. Built by {{ site.name }}." />
+  <title>Shipyard · {{ site.name }}</title>
+  {% include theme-init.html %}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}/shipyard/" />
+  <meta property="og:title" content="Shipyard · your PRs' test status in the menu bar" />
+  <meta property="og:description" content="A native macOS app that tracks your GitHub pull requests and their CI checks at a glance." />
+  <meta property="og:image" content="{{ site.url }}/assets/img/shipyard/main-light.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/shipyard.css' | relative_url }}" />
+  <link rel="icon" href="{{ img }}icon.png" />
+</head>
+<body class="sy">
+
+<div class="yarn-progress" aria-hidden="true">
+  <span class="yarn-strand" id="yarn"><i class="yarn-ball"></i></span>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="wash wash--coral" aria-hidden="true"></div>
+<div class="wash wash--teal" aria-hidden="true"></div>
+<div class="wash wash--gold" aria-hidden="true"></div>
+
+<!-- ── Nav ─────────────────────────────────────────────── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="{{ '/' | relative_url }}#work" class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>{{ name_parts | first }}
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#keys">Shortcuts</a></li>
+      <li><a href="#hood">Under the hood</a></li>
+      <li><a href="#download">Download</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lamp" id="lamp" type="button" aria-label="Night mode" aria-pressed="false" title="Pull for night mode">
+        <svg viewBox="0 0 36 52" aria-hidden="true">
+          <path class="lamp-glow" d="M8 31 L 0 52 H 36 L 28 31 Z" />
+          <line class="lamp-cord" x1="18" y1="0" x2="18" y2="15" />
+          <path class="lamp-shade" d="M6 30 C 6 20, 11 14, 18 14 C 25 14, 30 20, 30 30 Z" />
+          <circle class="lamp-bulb" cx="18" cy="31" r="4" />
+          <g class="lamp-pull">
+            <line x1="27" y1="28" x2="27" y2="40" />
+            <circle cx="27" cy="42" r="2.2" />
+          </g>
+        </svg>
+      </button>
+      <a href="{{ '/' | relative_url }}{{ app.download }}" download class="btn btn--small">Download</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<header class="sy-hero">
+  <div class="wrapper sy-hero-grid">
+    <div>
+      <p class="hero-kicker reveal-load" style="--d:0">
+        <span class="kicker-line" aria-hidden="true" style="background:var(--failed)"></span>Menu-bar app for Mac &middot; v{{ app.version }}
+      </p>
+      <div class="sy-title-row reveal-load" style="--d:1">
+        <img src="{{ img }}icon.png" alt="" class="sy-icon" width="76" height="76" />
+        <h1 class="sy-name">Shipyard</h1>
+      </div>
+      <p class="sy-tag reveal-load" style="--d:2">Know which of your PRs are <em>failing</em> without opening a single tab.</p>
+      <p class="sy-lede reveal-load" style="--d:3">
+        Shipyard finds every open pull request you've authored across GitHub, sorts each one's CI
+        checks into four plain buckets, and puts your most important PR's counts right in the menu bar.
+        Sign in once and it just keeps up.
+      </p>
+      <div class="hero-actions reveal-load" style="--d:4">
+        <a class="btn" href="{{ '/' | relative_url }}{{ app.download }}" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+          Download for macOS
+        </a>
+        <a class="btn btn--ghost" href="#features">See how it works</a>
+      </div>
+      <p class="sy-meta reveal-load" style="--d:5">v{{ app.version }} &middot; macOS 14 Sonoma or later &middot; Apple silicon &amp; Intel &middot; signed &amp; notarized</p>
+    </div>
+
+    <div class="sy-desk reveal-load" style="--d:2" role="img" aria-label="The Shipyard menu bar item showing 2 failed, 14 passed and 3 queued checks, with its popover open below it">
+      <div class="sy-menubar" aria-hidden="true">
+        <span class="sy-app">Xcode</span><span>File</span><span>Edit</span>
+        <span class="sy-clock">Thu 9:41 AM</span>
+      </div>
+      <div class="sy-status">
+        <img src="{{ img }}menubar.png" alt="" class="sy-status-item" />
+        <img src="{{ img }}popover.png" alt="" class="sy-popover" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ── Buckets ──────────────────────────────────────────── -->
+<section id="features">
+  <div class="wrapper">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--coral">Every check, four buckets</span></h2>
+    <p class="section-sub reveal">GitHub reports CI in more than a dozen states across two different APIs. Shipyard collapses them into the four you actually care about, and always lists them in the same order, so your eye lands on failures first.</p>
+
+    <div class="buckets">
+      <article class="bucket reveal" style="--b:var(--failed)">
+        <div class="bucket-head">
+          <svg class="bucket-glyph" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12"/><path d="M9 9l8 8M17 9l-8 8"/></svg>
+          <h3>Failed</h3>
+        </div>
+        <p>Always first, and the only red in the app. A failing PR also gets a thin red bar down its edge.</p>
+        <div class="states"><span class="state">FAILURE</span><span class="state">TIMED_OUT</span><span class="state">ERROR</span><span class="state">STARTUP_FAILURE</span></div>
+      </article>
+      <article class="bucket reveal" style="--b:var(--passed)">
+        <div class="bucket-head">
+          <svg class="bucket-glyph" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12"/><path d="M8 13.5l3.4 3.4L18 9.5"/></svg>
+          <h3>Passed</h3>
+        </div>
+        <p>A fully green PR shows a single count in the menu bar. Zeros stay grey everywhere, so color always means something.</p>
+        <div class="states"><span class="state">SUCCESS</span><span class="state">NEUTRAL</span></div>
+      </article>
+      <article class="bucket reveal" style="--b:var(--queued)">
+        <div class="bucket-head">
+          <svg class="bucket-glyph" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12"/><path d="M13 7.5V13l3.5 2.5"/></svg>
+          <h3>Queued</h3>
+        </div>
+        <p>Waiting and running together. Running checks get a spinner so you can tell them apart.</p>
+        <div class="states"><span class="state">QUEUED</span><span class="state">PENDING</span><span class="state">IN_PROGRESS</span><span class="state">WAITING</span></div>
+      </article>
+      <article class="bucket reveal" style="--b:var(--skipped)">
+        <div class="bucket-head">
+          <svg class="bucket-glyph" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="12"/><path d="M8.5 13h9"/></svg>
+          <h3>Skipped</h3>
+        </div>
+        <p>Cancelled runs are usually replaced by a newer one, so they land here. One toggle counts them as failed instead.</p>
+        <div class="states"><span class="state">SKIPPED</span><span class="state">CANCELLED</span><span class="state">STALE</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── The window ───────────────────────────────────────── -->
+<section>
+  <div class="wrapper">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--teal">The whole dock, one window</span></h2>
+    <p class="section-sub reveal">The popover covers most days. When you want to dig in, triage tickets or clean up, the main window has everything in three calm columns.</p>
+
+    <figure class="sy-window reveal">
+      <img src="{{ img }}main-light.png" alt="Shipyard's main window: a sidebar with Starred, Active, Tickets and Done; a list of pull requests with their test counts; and a detail pane breaking down the checks for the starred PR" class="tape theme-img--light" loading="lazy" />
+      <img src="{{ img }}main-dark.png" alt="Shipyard's main window in dark mode" class="tape theme-img--dark" loading="lazy" />
+    </figure>
+
+    <div class="sy-legend">
+      <p class="reveal" style="--c:var(--coral)"><strong>Sorted by urgency</strong>Your starred PR pins to the top, then anything failing, then whatever changed most recently. Filter by repo from the sidebar.</p>
+      <p class="reveal" style="--c:var(--teal)"><strong>Hide the noise</strong>PRs you don't care about go away with <kbd>⌘</kbd><kbd>⌫</kbd> and an undo toast. They stay hidden across renames and restarts.</p>
+      <p class="reveal" style="--c:var(--violet)"><strong>Light and dark</strong>Built on system materials, so it follows your appearance and accent color like any first-party Mac app.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Feature rows ─────────────────────────────────────── -->
+<section>
+  <div class="wrapper">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--gold">Built for the day-to-day</span></h2>
+    <p class="section-sub reveal">Small things that add up to never wondering whether CI is done yet.</p>
+
+    <article class="tool-card feature-row reveal">
+      <div class="tool-copy">
+        <p class="eyebrow">Detail pane</p>
+        <h3>Every check, grouped by what matters</h3>
+        <p>A segmented bar shows the shape of a run at a glance. Failures open by default; passes stay folded away until you want them.</p>
+        <ul>
+          <li>Each check shows its workflow, how long it took, and a link straight to its log</li>
+          <li>Copy the branch name in one click, or with <kbd>⌘</kbd><kbd>⇧</kbd><kbd>C</kbd></li>
+          <li>Only the latest commit counts, so stale runs never confuse the numbers</li>
+        </ul>
+      </div>
+      <div class="tool-shot">
+        <img src="{{ img }}detail-light.png" alt="Detail pane for a pull request: a segmented test bar, four stat tiles reading 2 failed, 14 passed, 3 queued and 1 skipped, and the failing checks listed with their durations" class="tape theme-img--light" loading="lazy" />
+        <img src="{{ img }}detail-dark.png" alt="The same detail pane in dark mode" class="tape theme-img--dark" loading="lazy" />
+      </div>
+    </article>
+
+    <article class="tool-card tool-card--flip feature-row reveal">
+      <div class="tool-copy">
+        <p class="eyebrow">Tickets</p>
+        <h3>Track the work before there's a PR</h3>
+        <p>Press <kbd>⌘</kbd><kbd>N</kbd>, type a title, hit Return. Paste a Jira, Linear or Shortcut link and the ticket key fills itself in.</p>
+        <ul>
+          <li>When a new PR's branch or title mentions a ticket's key, Shipyard suggests linking them. It never links without asking.</li>
+          <li>Linked tickets merge into their PR's row and move to Done when it merges</li>
+        </ul>
+      </div>
+      <div class="tool-shot">
+        <img src="{{ img }}tickets-light.png" alt="Three tickets without pull requests; the last one, ENG-1501, shows a suggestion reading 'Looks like #431'" class="tape theme-img--light" loading="lazy" />
+        <img src="{{ img }}tickets-dark.png" alt="The same tickets in dark mode" class="tape theme-img--dark" loading="lazy" />
+      </div>
+    </article>
+
+    <article class="tool-card feature-row reveal">
+      <div class="tool-copy">
+        <p class="eyebrow">Refresh</p>
+        <h3>Fast when it matters, quiet when it doesn't</h3>
+        <p>Shipyard watches what you're watching. It polls hard while your starred PR's tests are running, then eases off so it never burns through your GitHub rate limit.</p>
+        <ul>
+          <li>Cached data shows the instant it opens, with no spinner in the way</li>
+          <li>Offline? The last results stay on screen with a "last updated" label</li>
+        </ul>
+      </div>
+      <div class="tool-shot">
+        <div class="cadence">
+          <div class="cadence-row" style="--c:var(--queued); --speed:.9s"><span class="cadence-time">30 s</span><span>Starred PR has tests running</span></div>
+          <div class="cadence-row" style="--c:var(--passed); --speed:2s"><span class="cadence-time">2 min</span><span>Normal, the whole dashboard</span></div>
+          <div class="cadence-row" style="--c:var(--skipped); --speed:4s"><span class="cadence-time">5 min</span><span>Window and popover closed for a while</span></div>
+          <div class="cadence-row" style="--c:var(--failed); --speed:1.4s"><span class="cadence-time">now</span><span>Mac wakes, network returns, or you press <kbd>⌘</kbd><kbd>R</kbd></span></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="notes">
+      <article class="note reveal">
+        <h3>Sign in once, set up nothing</h3>
+        <p>Shipyard borrows your <a href="https://cli.github.com" target="_blank" rel="noopener" class="link-arrow">GitHub CLI</a> login, so there's no token to paste and no repos to pick. If the token ever changes, it quietly picks up the new one. SAML orgs get a one-click authorize banner.</p>
+      </article>
+      <article class="note reveal">
+        <h3>Lives in the menu bar</h3>
+        <p>Close the window and it keeps running. Hide the Dock icon entirely, launch at login, and set a global hotkey to drop the popover down from anywhere.</p>
+      </article>
+      <article class="note reveal">
+        <h3>Notifications, if you want them</h3>
+        <p>Off by default. Turn them on to hear when your starred PR's tests finish or a check fails. Click one to open the failing check.</p>
+      </article>
+      <article class="note reveal">
+        <h3>Readable without color</h3>
+        <p>Every count sits next to its own icon, so the buckets read just as clearly for colorblind users. Animations respect Reduce Motion.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Keyboard ─────────────────────────────────────────── -->
+<section id="keys">
+  <div class="wrapper">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--violet">Keyboard first</span></h2>
+    <p class="section-sub reveal">Every action has a shortcut. Arrow through the list and never touch the mouse.</p>
+
+    <div class="keys reveal">
+      <div class="key-row"><span>New ticket</span><span class="combo"><kbd>⌘</kbd><kbd>N</kbd></span></div>
+      <div class="key-row"><span>Refresh</span><span class="combo"><kbd>⌘</kbd><kbd>R</kbd></span></div>
+      <div class="key-row"><span>Star / unstar a PR</span><span class="combo"><kbd>⌘</kbd><kbd>S</kbd></span></div>
+      <div class="key-row"><span>Search</span><span class="combo"><kbd>⌘</kbd><kbd>F</kbd></span></div>
+      <div class="key-row"><span>Open on GitHub</span><span class="combo"><kbd>↩</kbd></span></div>
+      <div class="key-row"><span>Hide a PR</span><span class="combo"><kbd>⌘</kbd><kbd>⌫</kbd></span></div>
+      <div class="key-row"><span>Copy branch name</span><span class="combo"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>C</kbd></span></div>
+      <div class="key-row"><span>Link PR to a ticket</span><span class="combo"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>L</kbd></span></div>
+      <div class="key-row"><span>Show / hide details</span><span class="combo"><kbd>Space</kbd></span></div>
+      <div class="key-row"><span>Active, Starred, Tickets, Done</span><span class="combo"><kbd>⌘</kbd><kbd>1</kbd><kbd>–</kbd><kbd>4</kbd></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Under the hood ───────────────────────────────────── -->
+<section id="hood">
+  <div class="wrapper">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--teal">Under the hood</span></h2>
+    <p class="section-sub reveal">A few of the decisions behind it, for the curious.</p>
+
+    <div class="hood">
+      <div class="hood-item reveal">
+        <h3>A menu bar in color</h3>
+        <p>SwiftUI's <code>MenuBarExtra</code> renders its label as a monochrome template, which would make red and green impossible. The status item is an AppKit <code>NSStatusItem</code> instead, with colored SF Symbols attached to an attributed title.</p>
+      </div>
+      <div class="hood-item reveal">
+        <h3>One query, not fifty</h3>
+        <p>A single GitHub GraphQL search fetches every PR with its latest commit's check rollup. Each response reports the remaining rate limit, and Shipyard slows itself to every 10 minutes if that runs low.</p>
+      </div>
+      <div class="hood-item reveal">
+        <h3>Swift 6, strictly concurrent</h3>
+        <p>All networking lives in an actor so the UI never waits on a request. SwiftData caches PRs, tickets and hidden state, keyed by GitHub node IDs so nothing breaks when a PR is renamed.</p>
+      </div>
+      <div class="hood-item reveal">
+        <h3>Shipped like a real Mac app</h3>
+        <p>Hardened Runtime, signed with a Developer ID, notarized by Apple and stapled. One release script goes from source to a drag-to-install DMG, with Sparkle 2 ready for automatic updates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Download ─────────────────────────────────────────── -->
+<section id="download">
+  <div class="wrapper">
+    <div class="sy-download reveal">
+      <img src="{{ img }}icon.png" alt="Shipyard app icon" class="sy-icon" width="112" height="112" loading="lazy" />
+      <div>
+        <h2>Get Shipyard <em>{{ app.version }}</em></h2>
+        <p class="sy-meta" style="margin:0 0 20px">Free &middot; macOS 14 or later &middot; signed &amp; notarized by Apple</p>
+        <a class="btn btn--big" href="{{ '/' | relative_url }}{{ app.download }}" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+          Download Shipyard-{{ app.version }}.dmg
+        </a>
+      </div>
+      <ol class="install">
+        <li>Open the DMG and drag Shipyard into your Applications folder.</li>
+        <li>Install the GitHub CLI and log in, if you haven't: <code>brew install gh</code> then <code>gh auth login</code>.</li>
+        <li>Open Shipyard and click <strong>Use my GitHub CLI login</strong>. Your PRs show up on their own.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="sy-back">
+  <a class="link-arrow link-arrow--back" href="{{ '/' | relative_url }}#work">Back to the rest of my work</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrapper footer-inner">
+    <span>© <span id="year">2026</span> {{ site.name }}</span>
+    <span class="footer-dots" aria-hidden="true"><i style="--c:var(--failed)"></i><i style="--c:var(--passed)"></i><i style="--c:var(--queued)"></i><i style="--c:var(--skipped)"></i></span>
+    <a href="mailto:{{ site.email }}" class="link-arrow">Say hello</a>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

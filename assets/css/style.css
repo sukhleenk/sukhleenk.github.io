@@ -426,6 +426,20 @@ section { padding: 88px 0 30px; }
 }
 .link-arrow::after { content: " ↗"; font-size: .85em; }
 .link-arrow:hover { color: var(--coral); }
+/* links that stay on this site point onward, not out */
+.link-arrow--internal::after { content: " →"; }
+
+.project-links { flex-wrap: wrap; align-items: center; row-gap: 14px; }
+.btn--download { font-size: .88rem; }
+.download-meta {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .04em;
+  color: var(--ink-soft); margin-top: 10px;
+}
+
+/* screenshots that come in a day and a night version follow the lamp */
+.theme-img--dark { display: none; }
+[data-theme="dark"] .theme-img--light { display: none; }
+[data-theme="dark"] .theme-img--dark { display: block; }
 
 /* featured card */
 .feature-card {

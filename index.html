@@ -178,10 +178,21 @@ layout: null
         <p>{{ tool.description }}</p>
         <div class="tags">{% for tag in tool.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
         <div class="project-links">
-          {% for link in tool.links %}<a href="{{ link.url }}" target="_blank" rel="noopener" class="link-arrow">{{ link.label }}</a>{% endfor %}
+          {% if tool.download %}<a href="{{ tool.download }}" download class="btn btn--small btn--download">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+            Download .dmg</a>{% endif %}
+          {% for link in tool.links %}{% if link.internal %}<a href="{{ link.url }}" class="link-arrow link-arrow--internal">{{ link.label }}</a>{% else %}<a href="{{ link.url }}" target="_blank" rel="noopener" class="link-arrow">{{ link.label }}</a>{% endif %}{% endfor %}
         </div>
+        {% if tool.download %}<p class="download-meta">v{{ tool.version }} &middot; macOS 14+ &middot; signed &amp; notarized</p>{% endif %}
       </div>
-      <div class="tool-shot"><img src="{{ tool.image }}" alt="{{ tool.name }} screenshot" class="tape" loading="lazy" /></div>
+      <div class="tool-shot">
+        {% if tool.image_dark %}
+        <img src="{{ tool.image }}" alt="{{ tool.name }} screenshot" class="tape theme-img--light" loading="lazy" />
+        <img src="{{ tool.image_dark }}" alt="{{ tool.name }} screenshot" class="tape theme-img--dark" loading="lazy" />
+        {% else %}
+        <img src="{{ tool.image }}" alt="{{ tool.name }} screenshot" class="tape" loading="lazy" />
+        {% endif %}
+      </div>
     </article>
     {% endfor %}
   </div>

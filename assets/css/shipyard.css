@@ -1,0 +1,257 @@
+/* ============================================================
+   Shipyard showcase page — builds on style.css
+   the app's own bucket colors, set in the sketchbook
+   ============================================================ */
+
+:root {
+  /* straight from the app's asset catalog */
+  --failed:  #E5484D;
+  --passed:  #30A46C;
+  --queued:  #F5A524;
+  --skipped: #8B8D98;
+  /* the slate the menu bar screenshot was taken against */
+  --desk:    #5E7394;
+}
+:root[data-theme="dark"] {
+  --failed:  #FF6369;
+  --passed:  #3DD68C;
+  --queued:  #FFCA16;
+  --skipped: #9B9EA8;
+}
+
+.sy section { padding: 80px 0 20px; }
+
+/* ── hero ──────────────────────────────────────────────── */
+.sy-hero { padding: 72px 0 40px; }
+.sy-hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+}
+.sy-title-row { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+.sy-icon {
+  width: 76px; height: 76px; flex: none;
+  filter: drop-shadow(3px 4px 0 rgb(var(--shade-rgb) / .16));
+}
+.sy-name {
+  font-family: var(--display);
+  font-size: clamp(3rem, 7vw, 4.6rem);
+  font-weight: 600; line-height: 1; letter-spacing: -0.02em;
+}
+.sy-tag {
+  font-family: var(--display); font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  line-height: 1.3; margin-bottom: 18px;
+}
+.sy-tag em { color: var(--failed); }
+.sy-lede { color: var(--ink-soft); max-width: 50ch; margin-bottom: 28px; }
+.sy-meta {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .04em;
+  color: var(--ink-soft); margin-top: 14px;
+}
+
+/* a little Mac desktop: menu bar on top, the popover hanging from it */
+.sy-desk {
+  position: relative;
+  height: 460px;
+  border: 2px solid var(--ink); border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 88%, rgba(232, 96, 76, .45), transparent 55%),
+    radial-gradient(circle at 92% 70%, rgba(242, 169, 59, .35), transparent 50%),
+    linear-gradient(180deg, var(--desk) 0 30px, #6C7FA0 40%, #8E86A6 100%);
+  box-shadow: 7px 7px 0 rgba(229, 72, 77, .25);
+  transform: rotate(.8deg);
+}
+.sy-menubar {
+  height: 30px; padding: 0 16px;
+  display: flex; align-items: center; gap: 18px;
+  color: #fff; font: 600 .8rem/1 -apple-system, BlinkMacSystemFont, var(--body);
+}
+.sy-menubar span:not(.sy-app):not(.sy-clock) { font-weight: 400; opacity: .92; }
+.sy-menubar span.sy-app { font-weight: 700; opacity: 1; }
+.sy-clock { margin-left: auto; font-weight: 400; }
+.sy-status {
+  position: absolute; top: 3px; right: 64px;
+  width: 340px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.sy-status-item { width: 138px; }
+.sy-popover {
+  width: 100%; margin-top: 3px;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .35));
+  animation: drop-in .7s .5s cubic-bezier(.3, 1.3, .5, 1) both;
+  transform-origin: top center;
+}
+@keyframes drop-in {
+  from { opacity: 0; transform: translateY(-10px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── buckets ───────────────────────────────────────────── */
+.buckets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+.bucket {
+  background: var(--card);
+  border: 2px solid var(--ink); border-radius: var(--radius);
+  padding: 24px 22px;
+  box-shadow: 4px 4px 0 color-mix(in srgb, var(--b) 40%, transparent);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.bucket-head { display: flex; align-items: center; gap: 10px; }
+.bucket-head h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 600; }
+.bucket-glyph { width: 26px; height: 26px; flex: none; }
+.bucket-glyph circle { fill: var(--b); }
+.bucket-glyph path { stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.bucket p { color: var(--ink-soft); font-size: .95rem; }
+.states { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.state {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .02em;
+  padding: 2px 8px; border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--b) 45%, var(--line));
+  color: var(--ink-soft);
+}
+
+/* ── the full window ───────────────────────────────────── */
+.sy-window { margin-top: 44px; }
+.sy-window img { --r: -.6deg; width: 100%; }
+.sy-legend {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 34px; counter-reset: legend;
+}
+.sy-legend p { color: var(--ink-soft); font-size: .95rem; }
+.sy-legend strong {
+  display: block; color: var(--ink);
+  font-family: var(--display); font-size: 1.12rem; margin-bottom: 4px;
+}
+.sy-legend strong::before {
+  counter-increment: legend; content: counter(legend);
+  display: inline-grid; place-items: center;
+  width: 24px; height: 24px; margin-right: 9px;
+  border-radius: 50% 44% 54% 46%;
+  background: var(--c); color: #fff;
+  font-family: var(--mono); font-size: .75rem;
+  vertical-align: 2px;
+}
+
+/* ── feature rows (reuse .tool-card from style.css) ────── */
+.feature-row .tool-shot img { width: 100%; }
+.feature-row h3 { font-family: var(--display); font-size: 1.6rem; font-weight: 600; margin-bottom: 10px; line-height: 1.2; }
+.feature-row ul { margin-top: 14px; padding-left: 20px; color: var(--ink-soft); display: grid; gap: 6px; }
+.feature-row li::marker { color: var(--failed); }
+
+/* refresh schedule: a row of tide marks instead of a screenshot */
+.cadence { display: grid; gap: 12px; }
+.cadence-row {
+  display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: center;
+  padding: 12px 16px;
+  background: var(--paper-deep); border: 1.5px solid var(--line); border-radius: 12px;
+}
+.cadence-time {
+  font-family: var(--mono); font-weight: 500; font-size: .95rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.cadence-time::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--c);
+  animation: pulse var(--speed, 2s) ease-in-out infinite;
+}
+.cadence-row span:last-child { color: var(--ink-soft); font-size: .93rem; }
+@keyframes pulse { 50% { transform: scale(1.6); opacity: .5; } }
+
+/* ── small notes ───────────────────────────────────────── */
+.notes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 40px; }
+.note {
+  background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius);
+  padding: 26px 28px;
+  box-shadow: 4px 4px 0 rgba(124, 119, 185, .25);
+}
+.note h3 { font-family: var(--display); font-size: 1.25rem; font-weight: 600; margin-bottom: 6px; }
+.note p { color: var(--ink-soft); font-size: .96rem; }
+.note code, .install code, .hood-item code {
+  font-family: var(--mono); font-size: .82em;
+  background: var(--paper-deep); border: 1px solid var(--line);
+  padding: 1px 6px; border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* ── keyboard ──────────────────────────────────────────── */
+.keys { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 40px; margin-top: 36px; }
+.key-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 12px 0; border-bottom: 1.5px dashed var(--line);
+}
+.key-row span { color: var(--ink-soft); }
+.combo { display: flex; gap: 5px; flex: none; }
+kbd {
+  font-family: var(--body); font-weight: 700; font-size: .85rem;
+  min-width: 30px; height: 30px; padding: 0 8px;
+  display: inline-grid; place-items: center;
+  background: var(--card); color: var(--ink);
+  border: 1.5px solid var(--ink); border-radius: 7px;
+  box-shadow: 0 2.5px 0 var(--ink);
+}
+/* keycaps sitting in running text stay inside the line */
+p kbd, li kbd, .cadence-row kbd {
+  min-width: 21px; height: 21px; padding: 0 5px;
+  font-size: .72rem; border-radius: 5px; box-shadow: 0 1.5px 0 var(--ink);
+  vertical-align: 1px; margin: 0 1px;
+}
+
+/* ── under the hood ────────────────────────────────────── */
+.hood { display: grid; gap: 0; margin-top: 36px; }
+.hood-item {
+  display: grid; grid-template-columns: 220px 1fr; gap: 24px;
+  padding: 22px 0; border-top: 1.5px solid var(--line);
+}
+.hood-item:last-child { border-bottom: 1.5px solid var(--line); }
+.hood-item h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 600; }
+.hood-item p { color: var(--ink-soft); }
+
+/* ── download ──────────────────────────────────────────── */
+.sy-download {
+  display: grid; grid-template-columns: auto 1fr; gap: 30px 40px; align-items: center;
+  background: var(--card);
+  border: 2px solid var(--ink); border-radius: var(--radius);
+  padding: 44px;
+  box-shadow: 7px 7px 0 rgba(48, 164, 108, .28);
+  margin-top: 10px;
+}
+.sy-download .sy-icon { width: 112px; height: 112px; }
+.sy-download h2 {
+  font-family: var(--display); font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight: 600; line-height: 1.1; margin-bottom: 8px;
+}
+.sy-download h2 em { color: var(--passed); }
+.install {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  padding-top: 26px; border-top: 1.5px dashed var(--line);
+  list-style: none; counter-reset: step;
+}
+.install li { color: var(--ink-soft); font-size: .95rem; }
+.install li::before {
+  counter-increment: step; content: "Step " counter(step);
+  display: block; font-family: var(--mono); font-size: .72rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
+}
+
+.sy-back { padding: 60px 0 70px; text-align: center; }
+.link-arrow--back::after { content: none; }
+.link-arrow--back::before { content: "← "; font-size: .85em; }
+
+/* ── responsive ────────────────────────────────────────── */
+@media (max-width: 920px) {
+  .sy-hero-grid { grid-template-columns: 1fr; }
+  .buckets { grid-template-columns: 1fr 1fr; }
+  .sy-legend { grid-template-columns: 1fr; gap: 16px; }
+  .hood-item { grid-template-columns: 1fr; gap: 6px; }
+}
+
+@media (max-width: 700px) {
+  .sy-hero { padding-top: 44px; }
+  .sy-desk { height: 430px; transform: none; }
+  .sy-menubar span:not(.sy-app) { display: none; }
+  .sy-status { right: 50%; transform: translateX(50%); width: min(340px, calc(100% - 24px)); }
+  .buckets, .notes, .keys { grid-template-columns: 1fr; }
+  .sy-download { grid-template-columns: 1fr; padding: 28px; }
+  .sy-download .sy-icon { width: 84px; height: 84px; }
+  .install { grid-template-columns: 1fr; }
+  .note { padding: 22px; }
+}

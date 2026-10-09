@@ -70,6 +70,26 @@ apps:
         url: "https://apps.apple.com/us/app/rue-period-cycle-tracker/id6782203656"
 
 tools:
+  - name: "Shipyard"
+    description: >
+      A native macOS menu-bar app that finds every open pull request you've
+      authored across GitHub and collapses each one's CI checks into four
+      buckets: failed, passed, queued, skipped. Star one PR and its live counts
+      sit right in the menu bar. Tickets track work before a PR exists, then
+      offer to link themselves once a matching branch shows up. Signed,
+      notarized, and quiet: it refreshes faster while tests run and backs off
+      when you're away.
+    tags: [Swift, SwiftUI, AppKit, SwiftData, GitHub GraphQL, Sparkle, macOS]
+    image: "assets/img/shipyard/main-light.png"
+    image_dark: "assets/img/shipyard/main-dark.png"
+    # one place for the version: the card button and shipyard/ page both read it
+    version: "1.0.0"
+    download: "downloads/Shipyard-1.0.0.dmg"
+    links:
+      - label: "See what it does"
+        url: "shipyard/"
+        internal: true
+
   - name: "Hublands"
     description: >
       An open-source interactive atlas of the Hugging Face Hub. Maps models
