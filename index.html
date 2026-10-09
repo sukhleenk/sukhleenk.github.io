@@ -9,6 +9,7 @@ layout: null
   <meta name="theme-color" content="#FBF6EC" />
   <meta name="description" content="{{ site.description }}" />
   <title>{{ site.name }} · {{ site.title }}</title>
+  {% include theme-init.html %}
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ site.url }}/" />
@@ -31,7 +32,9 @@ layout: null
 </head>
 <body>
 
-<div class="paint-progress" aria-hidden="true"><span id="paint-bar"></span></div>
+<div class="yarn-progress" aria-hidden="true">
+  <span class="yarn-strand" id="yarn"><i class="yarn-ball"></i></span>
+</div>
 
 <div class="grain" aria-hidden="true"></div>
 
@@ -53,6 +56,18 @@ layout: null
       <li><a href="#skills">Skills</a></li>
     </ul>
     <div class="nav-right">
+      <button class="lamp" id="lamp" type="button" aria-label="Night mode" aria-pressed="false" title="Pull for night mode">
+        <svg viewBox="0 0 36 52" aria-hidden="true">
+          <path class="lamp-glow" d="M8 31 L 0 52 H 36 L 28 31 Z" />
+          <line class="lamp-cord" x1="18" y1="0" x2="18" y2="15" />
+          <path class="lamp-shade" d="M6 30 C 6 20, 11 14, 18 14 C 25 14, 30 20, 30 30 Z" />
+          <circle class="lamp-bulb" cx="18" cy="31" r="4" />
+          <g class="lamp-pull">
+            <line x1="27" y1="28" x2="27" y2="40" />
+            <circle cx="27" cy="42" r="2.2" />
+          </g>
+        </svg>
+      </button>
       <a href="mailto:{{ site.email }}" class="btn btn--small">Say hello</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -89,7 +104,7 @@ layout: null
 
     <div class="hero-photo-col reveal-load" style="--d:2">
       <div class="photo-frame">
-        <img src="assets/img/photo.jpg" alt="{{ site.name }}" class="hero-photo" />
+        <img src="assets/img/photo.jpg" alt="{{ site.name }}" class="hero-photo" fetchpriority="high" />
         <span class="sticker sticker--star" aria-hidden="true">✦</span>
         <span class="sticker sticker--flower" aria-hidden="true">✿</span>
         <span class="swatch-card" aria-hidden="true">
@@ -126,8 +141,8 @@ layout: null
         </div>
       </div>
       <div class="feature-shots">
-        <img src="{{ project.shot_web }}" alt="{{ project.name }} web dashboard" class="shot shot--web tape" />
-        <img src="{{ project.shot_phone }}" alt="{{ project.name }} iOS app" class="shot shot--phone tape" />
+        <img src="{{ project.shot_web }}" alt="{{ project.name }} web dashboard" class="shot shot--web tape" loading="lazy" />
+        <img src="{{ project.shot_phone }}" alt="{{ project.name }} iOS app" class="shot shot--phone tape" loading="lazy" />
       </div>
     </article>
     {% endfor %}
@@ -136,7 +151,7 @@ layout: null
       {% for app in site.data.projects.apps %}
       <article class="app-card reveal" style="--tilt:{{ app.tilt }}">
         <div class="app-card-head">
-          <img src="{{ app.icon }}" alt="{{ app.name }} app icon" class="app-icon" />
+          <img src="{{ app.icon }}" alt="{{ app.name }} app icon" class="app-icon" loading="lazy" />
           <div>
             <h3 class="project-name">{{ app.name }}</h3>
             <p class="eyebrow">{{ app.eyebrow }}</p>
@@ -147,7 +162,7 @@ layout: null
           {% for link in app.links %}<a href="{{ link.url }}" target="_blank" rel="noopener" class="link-arrow">{{ link.label }}</a>{% endfor %}
         </div>
         {% if app.screenshot %}
-        <img src="{{ app.screenshot }}" alt="{{ app.name }} screenshot" class="app-screenshot" />
+        <img src="{{ app.screenshot }}" alt="{{ app.name }} screenshot" class="app-screenshot" loading="lazy" />
         {% endif %}
       </article>
       {% endfor %}
@@ -166,7 +181,7 @@ layout: null
           {% for link in tool.links %}<a href="{{ link.url }}" target="_blank" rel="noopener" class="link-arrow">{{ link.label }}</a>{% endfor %}
         </div>
       </div>
-      <div class="tool-shot"><img src="{{ tool.image }}" alt="{{ tool.name }} screenshot" class="tape" /></div>
+      <div class="tool-shot"><img src="{{ tool.image }}" alt="{{ tool.name }} screenshot" class="tape" loading="lazy" /></div>
     </article>
     {% endfor %}
   </div>
@@ -182,7 +197,7 @@ layout: null
       <article class="tl-item reveal">
         <span class="tl-dot" style="--c:{{ job.color }}"></span>
         <div class="tl-head">
-          <h3>{{ job.role }} <span class="tl-co">&middot; {{ job.company }}</span></h3>
+          <h3>{{ job.role }} <span class="tl-co"><span class="tl-co-sep">&middot; </span>{{ job.company }}</span></h3>
           <span class="tl-period">{{ job.period }}</span>
         </div>
         <ul>
@@ -210,7 +225,7 @@ layout: null
         <div class="tags">{% for course in edu.coursework %}<span class="tag">{{ course }}</span>{% endfor %}</div>
         {% endif %}
       </div>
-      <img src="{{ edu.logo }}" alt="{{ edu.school }} logo" class="edu-logo" />
+      <img src="{{ edu.logo }}" alt="{{ edu.school }} logo" class="edu-logo" loading="lazy" />
     </article>
     {% endfor %}
   </div>
@@ -234,7 +249,11 @@ layout: null
     <div class="offhours reveal">
       <p class="eyebrow">Off hours</p>
       <p class="offhours-line">
-        <span>🎨 painting</span><span>🧶 crocheting</span><span>🥾 hiking</span><span>🌱 gardening</span><span>🔓 open source</span>
+        <span class="hobby" style="--c:var(--coral)">🎨 painting<svg class="doodle" viewBox="0 0 40 28" aria-hidden="true"><path pathLength="1" d="M4 21 C 11 9, 19 25, 27 13 S 35 7, 37 5" /><path pathLength="1" d="M18 18 v 6" /></svg></span>
+        <span class="hobby" style="--c:var(--rose)">🧶 crocheting<svg class="doodle" viewBox="0 0 40 28" aria-hidden="true"><circle pathLength="1" cx="19" cy="13" r="10" /><path pathLength="1" d="M12 6 C 18 10, 22 15, 25 22 M 10 16 C 16 11, 23 9, 28 10" /><path pathLength="1" d="M28 20 C 33 22, 35 26, 39 24" /></svg></span>
+        <span class="hobby" style="--c:var(--teal)">🥾 hiking<svg class="doodle" viewBox="0 0 40 28" aria-hidden="true"><path pathLength="1" d="M2 25 L 13 8 L 20 17 L 26 10 L 38 25" /><path pathLength="1" d="M10 12.5 L 13 14.5 L 16 12.5" /></svg></span>
+        <span class="hobby" style="--c:var(--gold)">🌱 gardening<svg class="doodle" viewBox="0 0 40 28" aria-hidden="true"><path pathLength="1" d="M20 27 C 20 20, 20 15, 20 10" /><path pathLength="1" d="M20 17 C 13 17, 10 12, 11 8 C 17 8, 20 12, 20 17" /><path pathLength="1" d="M20 12 C 25 12, 29 8, 29 4 C 24 4, 20 7, 20 12" /></svg></span>
+        <span class="hobby" style="--c:var(--violet)">🔓 open source<svg class="doodle" viewBox="0 0 40 28" aria-hidden="true"><path pathLength="1" d="M13 4 C 8 4, 11 14, 6 14 C 11 14, 8 24, 13 24" /><path pathLength="1" d="M23 7 L 17 21" /><path pathLength="1" d="M27 4 C 32 4, 29 14, 34 14 C 29 14, 32 24, 27 24" /></svg></span>
       </p>
     </div>
   </div>
@@ -260,7 +279,11 @@ layout: null
   <div class="wrapper footer-inner">
     <span>© <span id="year">2026</span> {{ site.name }}</span>
     <span class="footer-dots" aria-hidden="true"><i style="--c:#E8604C"></i><i style="--c:#F2A93B"></i><i style="--c:#3E8E7E"></i><i style="--c:#7C77B9"></i></span>
-    <span>made with ♡</span>
+    <span class="made-with">made with <svg class="paint-heart" viewBox="0 0 24 22" role="img" aria-label="love">
+      <defs><clipPath id="heart-clip"><path d="M12 20.5 C 5 15.5, 1.5 11.5, 1.5 7.2 C 1.5 4, 4 1.5, 7 1.5 C 9.2 1.5, 11 2.8, 12 4.6 C 13 2.8, 14.8 1.5, 17 1.5 C 20 1.5, 22.5 4, 22.5 7.2 C 22.5 11.5, 19 15.5, 12 20.5 Z" /></clipPath></defs>
+      <g clip-path="url(#heart-clip)"><path class="heart-paint" d="M-8 3 Q -3 0, 2 3 T 12 3 T 22 3 T 32 3 V 26 H -8 Z" /></g>
+      <path class="heart-line" d="M12 20.5 C 5 15.5, 1.5 11.5, 1.5 7.2 C 1.5 4, 4 1.5, 7 1.5 C 9.2 1.5, 11 2.8, 12 4.6 C 13 2.8, 14.8 1.5, 17 1.5 C 20 1.5, 22.5 4, 22.5 7.2 C 22.5 11.5, 19 15.5, 12 20.5 Z" />
+    </svg></span>
   </div>
 </footer>
 

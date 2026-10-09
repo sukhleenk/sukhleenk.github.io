@@ -12,9 +12,11 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // rotating word in the hero (words come from _config.yml via data-words)
 const rotator = document.getElementById('rotator');
-if (rotator && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (rotator && !reduceMotion) {
   const words = (rotator.dataset.words || rotator.textContent).split('|');
   let wi = 0;
   setInterval(() => {
@@ -27,14 +29,14 @@ if (rotator && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }, 2600);
 }
 
-// paint progress bar along the top + timeline that draws itself
-const paintBar = document.getElementById('paint-bar');
+// yarn that unspools along the top + timeline that draws itself
+const yarn = document.getElementById('yarn');
 const timeline = document.querySelector('.timeline');
 let scrollQueued = false;
-function paintOnScroll() {
-  if (paintBar) {
+function drawOnScroll() {
+  if (yarn) {
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    paintBar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+    yarn.style.setProperty('--p', (max > 0 ? window.scrollY / max : 0).toFixed(4));
   }
   if (timeline) {
     const box = timeline.getBoundingClientRect();
@@ -46,11 +48,11 @@ function paintOnScroll() {
 window.addEventListener('scroll', () => {
   if (!scrollQueued) {
     scrollQueued = true;
-    requestAnimationFrame(paintOnScroll);
+    requestAnimationFrame(drawOnScroll);
   }
 }, { passive: true });
-window.addEventListener('resize', paintOnScroll);
-paintOnScroll();
+window.addEventListener('resize', drawOnScroll);
+drawOnScroll();
 
 // highlight the section currently in view in the nav
 const navAnchor = {};
@@ -83,6 +85,57 @@ document.querySelectorAll('.swatch-card i').forEach((sw) => {
   });
 });
 
+// the lamp in the nav: pull the cord to switch between the day and night studio.
+// the starting theme is already set by the inline script in <head>
+const root = document.documentElement;
+const lamp = document.getElementById('lamp');
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+function setTheme(theme) {
+  root.dataset.theme = theme;
+  themeColor.content = theme === 'dark' ? '#1D1916' : '#FBF6EC';
+  if (lamp) {
+    lamp.setAttribute('aria-pressed', theme === 'dark');
+    lamp.title = theme === 'dark' ? 'Pull for daylight' : 'Pull for night mode';
+  }
+}
+setTheme(root.dataset.theme);
+
+if (lamp) {
+  lamp.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', next); } catch (e) {}
+
+    lamp.classList.remove('tug');
+    void lamp.offsetWidth; // restart the tug animation
+    lamp.classList.add('tug');
+
+    if (!document.startViewTransition || reduceMotion) {
+      setTheme(next);
+      return;
+    }
+    // the new theme spills outward from the lamp like light filling a room
+    const box = lamp.getBoundingClientRect();
+    const x = box.left + box.width / 2;
+    const y = box.top + box.height * 0.6;
+    const reach = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const swap = document.startViewTransition(() => setTheme(next));
+    swap.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0 at ${x}px ${y}px)`, `circle(${reach}px at ${x}px ${y}px)`] },
+        { duration: 650, easing: 'cubic-bezier(.5, 0, .3, 1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    });
+  });
+}
+
+// follow the system setting until someone picks a theme themselves
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (err) {}
+  if (!saved) setTheme(e.matches ? 'dark' : 'light');
+});
+
 // mobile nav
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
@@ -101,4 +154,5 @@ if (hamburger) {
   );
 }
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const year = document.getElementById('year');
+if (year) year.textContent = new Date().getFullYear();
