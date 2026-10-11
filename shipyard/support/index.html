@@ -1,0 +1,97 @@
+---
+layout: shipyard-doc
+title: Help and Support
+description: Answers to common questions about Shipyard for iPhone and Mac, and how to get in touch.
+permalink: /shipyard/support/
+---
+<div class="doc-summary">
+  <p><strong>Need a hand?</strong> Email <a href="mailto:{{ site.email }}?subject=Shipyard%20support">{{ site.email }}</a>.
+  Say which app (iPhone or Mac) and its version, which you'll find in Settings. I usually reply
+  within a couple of days.</p>
+</div>
+
+<h2>Signing in (iPhone)</h2>
+
+<h3>How does sign-in work?</h3>
+<ol>
+  <li>Tap <strong>Sign In with GitHub</strong>. Shipyard shows a short code.</li>
+  <li>Tap <strong>Copy Code and Open GitHub</strong>, paste the code, and approve.</li>
+  <li>Come back to Shipyard. It finishes on its own.</li>
+</ol>
+<p>Your iPhone gets its own access, separate from Shipyard for Mac, so you can revoke one without
+affecting the other.</p>
+
+<h3>The code expired</h3>
+<p>Codes last about 15 minutes. Tap <strong>Try Again</strong> for a new one.</p>
+
+<h3>Why does GitHub ask for access to my repositories?</h3>
+<p>GitHub has no read-only option for private repositories' checks, so the request covers full
+repository access. Shipyard only ever reads pull requests and their checks. It never changes
+anything.</p>
+
+<h2>Missing pull requests</h2>
+
+<h3>PRs from my work organization don't show up</h3>
+<p>There are two usual reasons:</p>
+<ul>
+  <li><strong>Single sign-on.</strong> If the organization uses SAML single sign-on, Shipyard shows
+    a banner with an <strong>Authorize on GitHub</strong> button. Authorize once, then pull to
+    refresh.</li>
+  <li><strong>Third-party app restrictions.</strong> The organization may restrict third-party
+    apps.
+    <ul>
+      <li>Go to GitHub › Settings › Applications › Authorized OAuth Apps › Shipyard and request
+        access for that organization.</li>
+      <li>An organization owner then needs to approve it.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Which PRs does Shipyard show?</h3>
+<ul>
+  <li>By default, open pull requests you authored, in any repository.</li>
+  <li>Turn on <strong>Include PRs assigned to me</strong> in Settings to add the ones assigned to
+    you.</li>
+</ul>
+
+<h2>The Live Activity (iPhone)</h2>
+
+<h3>It doesn't appear during my work hours</h3>
+<ul>
+  <li>Check that work hours are on in Shipyard › Settings, with the right days and times.</li>
+  <li>Make sure Live Activities are allowed: iPhone Settings › Shipyard › Live Activities.</li>
+  <li>If you swiped it away, it stays hidden until your next workday. To bring it back now, tap
+    <strong>Show Now</strong> on Shipyard's home screen.</li>
+  <li>Shipyard schedules the next few workdays ahead whenever it runs. If you haven't opened it in
+    a while, open it once.</li>
+</ul>
+
+<h3>How up to date are the numbers?</h3>
+<ul>
+  <li>Tap ↻ on the Live Activity for an instant refresh.</li>
+  <li>Otherwise it updates whenever iOS gives Shipyard background time. That's usually every 15
+    minutes or so, but iOS decides.</li>
+  <li>If the data is more than 30 minutes old, the Live Activity says so.</li>
+</ul>
+
+<h3>It ended before my workday did</h3>
+<p>iOS ends every Live Activity after 8 hours. Open Shipyard and tap <strong>Show Now</strong> to
+start a fresh one.</p>
+
+<h3>Can I use it on iPad?</h3>
+<p>Yes. Your pull requests and checks work the same way. Live Activities only exist on iPhone, so
+the work-hours feature is hidden on iPad.</p>
+
+<h2>Shipyard for Mac</h2>
+<ul>
+  <li>The Mac app lives in your menu bar and signs in with the GitHub CLI.</li>
+  <li>To install it, see the <a href="{{ '/shipyard/' | relative_url }}">Shipyard page</a>.</li>
+  <li>It updates itself. You can also choose <strong>Check for Updates…</strong> from its menu.</li>
+</ul>
+
+<h2>Signing out and privacy</h2>
+<ul>
+  <li><strong>Sign Out</strong> in Settings removes your token and cached data from the device.</li>
+  <li>Shipyard collects nothing. See the <a href="{{ '/shipyard/privacy/' | relative_url }}">privacy
+    policy</a>.</li>
+</ul>

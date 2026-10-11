@@ -1,0 +1,95 @@
+---
+layout: null
+---
+{% assign name_parts = site.name | split: " " %}
+{% capture img %}{{ '/assets/img/shipyard/' | relative_url }}{% endcapture %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FBF6EC" />
+  <meta name="description" content="{{ page.description }}" />
+  <title>{{ page.title }} · Shipyard</title>
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+  {% include theme-init.html %}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ site.name }}" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+  <meta property="og:title" content="{{ page.title }} · Shipyard" />
+  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="og:image" content="{{ site.url }}/assets/img/shipyard/og-card.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/shipyard.css' | relative_url }}" />
+  <link rel="icon" href="{{ img }}icon.png" />
+</head>
+<body class="sy">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="wash wash--coral" aria-hidden="true"></div>
+<div class="wash wash--teal" aria-hidden="true"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="{{ '/' | relative_url }}#work" class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>{{ name_parts | first }}
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="{{ '/shipyard/' | relative_url }}">Shipyard</a></li>
+      <li><a href="{{ '/shipyard/support/' | relative_url }}">Support</a></li>
+      <li><a href="{{ '/shipyard/privacy/' | relative_url }}">Privacy</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lamp" id="lamp" type="button" aria-label="Night mode" aria-pressed="false" title="Pull for night mode">
+        <svg viewBox="0 0 36 52" aria-hidden="true">
+          <path class="lamp-glow" d="M8 31 L 0 52 H 36 L 28 31 Z" />
+          <line class="lamp-cord" x1="18" y1="0" x2="18" y2="15" />
+          <path class="lamp-shade" d="M6 30 C 6 20, 11 14, 18 14 C 25 14, 30 20, 30 30 Z" />
+          <circle class="lamp-bulb" cx="18" cy="31" r="4" />
+          <g class="lamp-pull">
+            <line x1="27" y1="28" x2="27" y2="40" />
+            <circle cx="27" cy="42" r="2.2" />
+          </g>
+        </svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="sy-doc">
+  <div class="wrapper">
+    <header class="sy-doc-head">
+      <img src="{{ img }}icon.png" alt="" class="sy-icon" width="64" height="64" />
+      <div>
+        <p class="sy-meta">Shipyard for iPhone and Mac</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.updated %}<p class="sy-meta">Last updated {{ page.updated | date: "%B %-d, %Y" }}</p>{% endif %}
+      </div>
+    </header>
+    <article class="doc-body">
+{{ content }}
+    </article>
+  </div>
+</main>
+
+<div class="sy-back">
+  <a class="link-arrow link-arrow--back" href="{{ '/shipyard/' | relative_url }}">Back to Shipyard</a>
+</div>
+
+<footer>
+  <div class="wrapper footer-inner">
+    <span>© <span id="year">2026</span> {{ site.name }}</span>
+    <span class="footer-dots" aria-hidden="true"><i style="--c:var(--failed)"></i><i style="--c:var(--passed)"></i><i style="--c:var(--queued)"></i><i style="--c:var(--skipped)"></i></span>
+    <a href="mailto:{{ site.email }}" class="link-arrow">Say hello</a>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

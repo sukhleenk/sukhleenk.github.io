@@ -255,3 +255,32 @@ p kbd, li kbd, .cadence-row kbd {
   .install { grid-template-columns: 1fr; }
   .note { padding: 22px; }
 }
+
+/* ── privacy and support pages ─────────────────────────── */
+.sy-doc { padding: 120px 0 10px; }
+.sy-doc-head { display: flex; align-items: center; gap: 20px; margin-bottom: 36px; }
+.sy-doc-head .sy-icon { width: 64px; height: 64px; }
+.sy-doc-head h1 { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.05; }
+.doc-body { max-width: 68ch; }
+.doc-body h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 600; margin: 40px 0 10px; }
+.doc-body h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 600; margin: 26px 0 6px; }
+.doc-body p, .doc-body li { color: var(--ink-soft); }
+.doc-body p + p { margin-top: 12px; }
+.doc-body ul, .doc-body ol { padding-left: 22px; margin: 10px 0; display: grid; gap: 6px; }
+.doc-body li::marker { color: var(--failed); }
+.doc-body a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+.doc-body strong { color: var(--ink); }
+.doc-body code {
+  font-family: var(--mono); font-size: .85em;
+  background: var(--paper-deep); border: 1px solid var(--line);
+  padding: 1px 6px; border-radius: 6px;
+}
+.doc-summary {
+  background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius);
+  padding: 22px 26px; box-shadow: 4px 4px 0 rgba(48, 164, 108, .25);
+}
+.doc-summary p { color: var(--ink); }
+@media (max-width: 700px) {
+  .sy-doc { padding-top: 96px; }
+  .sy-doc-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
