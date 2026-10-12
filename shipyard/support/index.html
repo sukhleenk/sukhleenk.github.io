@@ -23,6 +23,22 @@ permalink: /shipyard/support/
 <p>Your iPhone gets its own access, separate from Shipyard for Mac, so you can revoke one without
 affecting the other.</p>
 
+<h3>My work organization restricts third-party apps</h3>
+<p>Then <strong>Sign In with GitHub</strong> needs an organization owner to approve Shipyard
+first. Skip that by tapping <strong>Use a Token Instead</strong> on the sign-in screen. Tokens
+aren't subject to that restriction, and either of these works right away:</p>
+<ul>
+  <li><strong>Your GitHub CLI login</strong>, the same one Shipyard for Mac uses. On your Mac, run
+    <code>gh auth token | pbcopy</code> in Terminal, then paste on your iPhone. Universal
+    Clipboard carries it over.</li>
+  <li><strong>A personal access token.</strong> Tap <strong>Create a Token on GitHub</strong>.
+    The <code>repo</code> scope is already ticked, so pick an expiration, generate it, and paste
+    it in. If your organization uses single sign-on, tap <strong>Configure SSO</strong> next to
+    the token and authorize it.</li>
+</ul>
+<p>Already signed in the other way? Sign out in Settings, then choose <strong>Use a Token
+Instead</strong>.</p>
+
 <h3>The code expired</h3>
 <p>Codes last about 15 minutes. Tap <strong>Try Again</strong> for a new one.</p>
 
@@ -39,14 +55,10 @@ anything.</p>
   <li><strong>Single sign-on.</strong> If the organization uses SAML single sign-on, Shipyard shows
     a banner with an <strong>Authorize on GitHub</strong> button. Authorize once, then pull to
     refresh.</li>
-  <li><strong>Third-party app restrictions.</strong> The organization may restrict third-party
-    apps.
-    <ul>
-      <li>Go to GitHub › Settings › Applications › Authorized OAuth Apps › Shipyard and request
-        access for that organization.</li>
-      <li>An organization owner then needs to approve it.</li>
-    </ul>
-  </li>
+  <li><strong>Third-party app restrictions.</strong> If you signed in with <strong>Sign In with
+    GitHub</strong> and the organization restricts third-party apps, sign out and use a token
+    instead (see above). You can also ask an owner to approve Shipyard under GitHub › Settings ›
+    Applications › Authorized OAuth Apps.</li>
 </ul>
 
 <h3>Which PRs does Shipyard show?</h3>

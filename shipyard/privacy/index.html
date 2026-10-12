@@ -31,8 +31,9 @@ Privacy Statement</a>.</p>
 <ul>
   <li><strong>Your GitHub access token</strong>, in the system Keychain.
     <ul>
-      <li>On iPhone, it's created when you sign in with GitHub's device sign-in. It is kept on
-        that device only: it isn't synced to iCloud and isn't included in backups.</li>
+      <li>On iPhone, it's either created when you sign in with GitHub's device sign-in, or it's a
+        token you paste in yourself. It is kept on that device only: it isn't synced to iCloud
+        and isn't included in backups.</li>
       <li>On Mac, it's read from the GitHub CLI (<code>gh</code>).</li>
     </ul>
   </li>
@@ -67,8 +68,12 @@ browser or the GitHub app and is covered by GitHub's policies.</p>
   <li><strong>Deleting the app</strong> removes everything it stored.</li>
   <li><strong>Revoking access</strong> on GitHub:
     <ul>
-      <li>the iPhone app's access is under <a href="https://github.com/settings/applications">Settings
-        › Applications › Authorized OAuth Apps</a>;</li>
+      <li>if you used the iPhone app's GitHub sign-in, its access is under
+        <a href="https://github.com/settings/applications">Settings › Applications › Authorized
+        OAuth Apps</a>;</li>
+      <li>if you pasted a personal access token, delete it under
+        <a href="https://github.com/settings/tokens">Settings › Developer settings › Personal
+        access tokens</a>;</li>
       <li>the Mac app uses your GitHub CLI login, which you can sign out of with
         <code>gh auth logout</code>.</li>
     </ul>
