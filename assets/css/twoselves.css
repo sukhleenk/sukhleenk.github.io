@@ -1,0 +1,40 @@
+/* ============================================================
+   Two Selves pages — builds on style.css and shipyard.css
+   marigold for the wanting self, iris for the experiencing self
+   ============================================================ */
+
+:root {
+  /* the app's default color pair */
+  --want: #E08A1E;
+  --exp:  #5A62D6;
+}
+:root[data-theme="dark"] {
+  --want: #F2B04A;
+  --exp:  #9AA2F5;
+}
+
+.wash--want { width: 520px; height: 520px; top: -140px; right: -120px; background: radial-gradient(circle, rgba(224,138,30,.36), transparent 70%); }
+.wash--exp  { width: 480px; height: 480px; top: 55%; left: -180px; background: radial-gradient(circle, rgba(90,98,214,.30), transparent 70%); animation-delay: -8s; }
+
+.ts .sy-icon { border-radius: 22%; }
+.ts .sy-tag .want { color: var(--want); }
+.ts .sy-tag .exp  { color: var(--exp); }
+.ts .doc-body li::marker { color: var(--want); }
+.ts .doc-summary { box-shadow: 4px 4px 0 rgba(90, 98, 214, .25); }
+.ts .note { box-shadow: 4px 4px 0 rgba(224, 138, 30, .25); }
+
+/* the App Store slides, fanned like prints on a desk */
+.ts-shots {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 22px; margin-top: 34px; align-items: start;
+}
+.ts-shots img { width: 100%; }
+.ts-shots img:nth-child(odd)  { --r: -1.2deg; }
+.ts-shots img:nth-child(even) { --r: 1deg; margin-top: 28px; }
+
+.ts-hero-shot { display: flex; justify-content: center; }
+.ts-hero-shot img { width: min(320px, 80%); --r: 1.5deg; }
+
+@media (max-width: 860px) {
+  .ts-shots { grid-template-columns: repeat(2, 1fr); }
+}

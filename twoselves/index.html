@@ -1,0 +1,151 @@
+---
+layout: null
+permalink: /twoselves/
+---
+{% assign name_parts = site.name | split: " " %}
+{% capture img %}{{ '/assets/img/twoselves/' | relative_url }}{% endcapture %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FBF6EC" />
+  {% capture page_title %}Two Selves: find out what you'll actually enjoy{% endcapture %}
+  {% capture page_desc %}Two Selves is an iPhone app that compares how much you expect to enjoy something with how it actually felt, then maps where your expectations are wrong. Private, on-device, no account.{% endcapture %}
+  <meta name="description" content="{{ page_desc }}" />
+  <title>{{ page_title }}</title>
+  <link rel="canonical" href="{{ site.url }}/twoselves/" />
+  {% include theme-init.html %}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ site.name }}" />
+  <meta property="og:url" content="{{ site.url }}/twoselves/" />
+  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:description" content="{{ page_desc }}" />
+  <meta property="og:image" content="{{ site.url }}/assets/img/twoselves/05-pattern.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/shipyard.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/twoselves.css' | relative_url }}" />
+  <link rel="icon" href="{{ img }}icon.png" />
+</head>
+<body class="sy ts">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="wash wash--want" aria-hidden="true"></div>
+<div class="wash wash--exp" aria-hidden="true"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="{{ '/' | relative_url }}#work" class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>{{ name_parts | first }}
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="{{ '/twoselves/support/' | relative_url }}">Support</a></li>
+      <li><a href="{{ '/twoselves/privacy/' | relative_url }}">Privacy</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lamp" id="lamp" type="button" aria-label="Night mode" aria-pressed="false" title="Pull for night mode">
+        <svg viewBox="0 0 36 52" aria-hidden="true">
+          <path class="lamp-glow" d="M8 31 L 0 52 H 36 L 28 31 Z" />
+          <line class="lamp-cord" x1="18" y1="0" x2="18" y2="15" />
+          <path class="lamp-shade" d="M6 30 C 6 20, 11 14, 18 14 C 25 14, 30 20, 30 30 Z" />
+          <circle class="lamp-bulb" cx="18" cy="31" r="4" />
+          <g class="lamp-pull">
+            <line x1="27" y1="28" x2="27" y2="40" />
+            <circle cx="27" cy="42" r="2.2" />
+          </g>
+        </svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="sy-hero">
+  <div class="wrapper sy-hero-grid">
+    <div>
+      <p class="hero-kicker reveal-load" style="--d:0">
+        <span class="kicker-line" aria-hidden="true" style="background:var(--want)"></span>iPhone app &middot; coming soon to the App Store
+      </p>
+      <div class="sy-title-row reveal-load" style="--d:1">
+        <img src="{{ img }}icon.png" alt="" class="sy-icon" width="76" height="76" />
+        <h1 class="sy-name">Two Selves</h1>
+      </div>
+      <p class="sy-tag reveal-load" style="--d:2">Your <span class="want">wanting self</span> picks what to do. Your <span class="exp">experiencing self</span> lives through it. They disagree more than you think.</p>
+      <p class="sy-lede reveal-load" style="--d:3">
+        Before something, drag one dot: how much you want it, and how much you expect to enjoy it.
+        Afterward, Two Selves checks back once and you drag again. Over a few weeks it maps where
+        your expectations are wrong, in your favor and against it.
+      </p>
+      <div class="hero-actions reveal-load" style="--d:4">
+        <a class="btn" href="#how">See how it works</a>
+        <a class="btn btn--ghost" href="{{ '/twoselves/support/' | relative_url }}">Get help</a>
+      </div>
+      <p class="sy-meta reveal-load" style="--d:5">Free &middot; iOS 18 or later &middot; no account &middot; your data stays on your phone</p>
+    </div>
+
+    <div class="ts-hero-shot reveal-load" style="--d:2">
+      <img src="{{ img }}01-forecast.jpg" alt="The forecast screen: one dot on a pad, with how much you want something across and how much you expect to enjoy it up" class="tape" />
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="how">
+  <div class="wrapper">
+    <h2 class="section-title reveal"><span class="title-brush title-brush--gold">Two seconds before, two seconds after</span></h2>
+    <p class="section-sub reveal">No typing and no journaling. The line between your two answers is the gap, and the gap is the whole point.</p>
+
+    <div class="ts-shots reveal">
+      <img src="{{ img }}01-forecast.jpg" alt="Forecast: drag one dot before you do something" class="tape" loading="lazy" />
+      <img src="{{ img }}02-gap.jpg" alt="Report: drag again afterward, and the gap appears" class="tape" loading="lazy" />
+      <img src="{{ img }}03-map.jpg" alt="Map: every moment you've checked in on, grouped by kind" class="tape" loading="lazy" />
+      <img src="{{ img }}05-pattern.jpg" alt="Pattern: a plain sentence about where your expectations are off" class="tape" loading="lazy" />
+    </div>
+
+    <div class="notes">
+      <article class="note reveal">
+        <h3>Patterns you can trust</h3>
+        <p>Two Selves only says something once your own check-ins back it up. Things like "you dread time with friends and enjoy it almost every time."</p>
+      </article>
+      <article class="note reveal">
+        <h3>Catch the scroll</h3>
+        <p>A Shortcuts automation can ask how much you want to open a feed app, then check back twenty minutes later. Step-by-step setup is in the app's Settings.</p>
+      </article>
+      <article class="note reveal">
+        <h3>No streaks, no judgment</h3>
+        <p>No red and green, no scores. Just a curious, honest look at what you actually like.</p>
+      </article>
+      <article class="note reveal">
+        <h3>Private by default</h3>
+        <p>Everything stays on your device and in your own iCloud. No account and no analytics. Read the <a href="{{ '/twoselves/privacy/' | relative_url }}" class="link-arrow">privacy policy</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="sy-back">
+  <a class="link-arrow link-arrow--back" href="{{ '/' | relative_url }}#work">Back to the rest of my work</a>
+</div>
+</main>
+
+<footer>
+  <div class="wrapper footer-inner">
+    <span>© <span id="year">2026</span> {{ site.name }}</span>
+    <span class="footer-dots" aria-hidden="true"><i style="--c:var(--want)"></i><i style="--c:var(--exp)"></i></span>
+    <a href="mailto:{{ site.email }}" class="link-arrow">Say hello</a>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
