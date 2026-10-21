@@ -14,6 +14,11 @@ sitemap: false
 - [Shipyard for Mac]({{ site.url }}/shipyard/): {{ shipyard.description | strip_html | normalize_whitespace }}
 - [Download Shipyard {{ shipyard.version }} (.dmg)]({{ site.url }}/{{ shipyard.download }}): free, signed and notarized by Apple, runs on macOS 14 Sonoma or later on Apple silicon and Intel. Requires the GitHub CLI (`gh`) for sign-in. Installed copies update themselves (Sparkle), prompting when a new version is out.
 
+## Two Selves (iOS app)
+
+- [Two Selves]({{ site.url }}/twoselves/): a private iPhone mood journal. Before something, drag one dot for how much you want it and expect to enjoy it; afterward, check in once. Over time it maps where expectations and experiences disagree, and a Shortcuts automation can catch doomscrolling. Free, with an optional Pro upgrade. No account or analytics.
+- [Support]({{ site.url }}/twoselves/support/) and [privacy policy]({{ site.url }}/twoselves/privacy/)
+
 ## Products
 
 {% for p in site.data.projects.featured %}- [{{ p.name }}]({{ p.links[0].url }}): {{ p.description | strip_html | replace: "&rsquo;", "'" | replace: "&mdash;", "—" | normalize_whitespace }}

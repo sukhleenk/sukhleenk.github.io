@@ -10,8 +10,8 @@ permalink: /twoselves/
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#FBF6EC" />
-  {% capture page_title %}Two Selves: find out what you'll actually enjoy{% endcapture %}
-  {% capture page_desc %}Two Selves is an iPhone app that compares how much you expect to enjoy something with how it actually felt, then maps where your expectations are wrong. Private, on-device, no account.{% endcapture %}
+  {% capture page_title %}Two Selves: a mood journal for iPhone that compares what you expect with how it felt{% endcapture %}
+  {% capture page_desc %}Two Selves is a private iPhone mood journal. Guess how much you'll enjoy something, check in afterward, and see where your expectations are wrong. Catches doomscrolling too. No account, no tracking.{% endcapture %}
   <meta name="description" content="{{ page_desc }}" />
   <title>{{ page_title }}</title>
   <link rel="canonical" href="{{ site.url }}/twoselves/" />
@@ -22,8 +22,46 @@ permalink: /twoselves/
   <meta property="og:url" content="{{ site.url }}/twoselves/" />
   <meta property="og:title" content="{{ page_title }}" />
   <meta property="og:description" content="{{ page_desc }}" />
-  <meta property="og:image" content="{{ site.url }}/assets/img/twoselves/05-pattern.jpg" />
+  <meta property="og:image" content="{{ site.url }}/assets/img/twoselves/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Two Selves app icon beside two iPhone screenshots: a forecast pad and a pattern card" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ page_title }}" />
+  <meta name="twitter:description" content="{{ page_desc }}" />
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/twoselves/og-card.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Two Selves",
+    "alternateName": "Two Selves: Know What You Like",
+    "description": {{ page_desc | jsonify }},
+    "url": "{{ site.url }}/twoselves/",
+    "operatingSystem": "iOS 18.0 or later",
+    "applicationCategory": "LifestyleApplication",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "image": "{{ site.url }}/assets/img/twoselves/icon.png",
+    "screenshot": [
+      "{{ site.url }}/assets/img/twoselves/01-forecast.jpg",
+      "{{ site.url }}/assets/img/twoselves/02-gap.jpg",
+      "{{ site.url }}/assets/img/twoselves/03-map.jpg",
+      "{{ site.url }}/assets/img/twoselves/05-pattern.jpg"
+    ],
+    "featureList": [
+      "Forecast how much you want something and expect to enjoy it with one drag",
+      "Check in afterward and see the gap between expectation and experience",
+      "Patterns that appear only once your own check-ins support them",
+      "A Shortcuts automation that catches doomscrolling before you open a feed app",
+      "Widgets, Siri and Shortcuts, and Live Activities",
+      "Optional Apple Health State of Mind logging",
+      "No account, no analytics, data stays on device"
+    ],
+    "author": { "@type": "Person", "name": {{ site.name | jsonify }}, "url": "{{ site.url }}/" }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
