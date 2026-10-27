@@ -6,14 +6,14 @@
 name:     "Sukhleen Kaur"
 title:    "Software Engineer & Artist"
 location: "Salt Lake City, UT"
-availability: "open to work"
+availability: "software engineer at lumion"
 email:    "sukhleenk1113@gmail.com"
 
 # Site URL (used for the social share card)
 url: "https://sukhleenk.github.io"
 
 # Meta description for search engines
-description: "Portfolio of Sukhleen Kaur, a software engineer and artist in Salt Lake City. Full-stack web, iOS, and Python. Open to work."
+description: "Portfolio of Sukhleen Kaur, a software engineer and artist in Salt Lake City. Full-stack web, iOS, Python, and PHP."
 
 # Bio — the paragraph under your name in the hero
 bio: >
@@ -32,10 +32,10 @@ rotator_words:
 
 # Scrolling ticker under the hero
 marquee:
-  - open to software roles
-  - salt lake city or remote
-  - full-stack · iOS · python
-  - 2 apps on the App Store
+  - software engineer at lumion
+  - salt lake city, utah
+  - full-stack · iOS · python · php
+  - 4 apps on the App Store
 
 # Social links — comment out any you don't want shown
 social:

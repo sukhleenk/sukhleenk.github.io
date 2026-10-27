@@ -1,15 +1,26 @@
 # _data/experience.yml
 # Order here = order on the page. "color" sets the timeline dot.
 
+- role: "Software Engineer"
+  company: "Lumion"
+  period: "Sep 2026 – present"
+  color: "#D2649A"
+  bullets:
+    - "Owned Lumion's Skills feature end-to-end and shipped it in under 2 weeks, letting schools schedule recurring reports that the company's AI assistant runs automatically, with results verified against source data, PII scrubbing, and email, SMS, and in-app delivery."
+    - "Discovered that PR CI was silently skipping ~10,600 tests (16% of the suite) and rebuilt test sharding around recorded run times, cutting PR test runs from 30+ to about 20 minutes while running every test."
+    - "Built AI evaluations for the assistant, including regression test sets and multi-turn prompt A/B testing, catching invented product features and fixing refusals to answer \"what should I do next?\" for 27 of 114 schools."
+    - "Expanded what the AI assistant can answer and do by closing 12 capability gaps with 10 new MCP tools across tasks, messages, appointments, payouts, and surveys, plus confirmable contact actions."
+  tags: [PHP, Laravel, Livewire, MySQL, LLM Evals, MCP, GitHub Actions]
+
 - role: "Independent Developer"
   company: "Self-employed"
   period: "Jan 2026 – present"
   color: "#E8604C"
   bullets:
     - "Design, build, ship, and support a portfolio of 5 consumer and SaaS products end-to-end, from concept and careful UI design through production releases, analytics, and ongoing user support (alongside full-time employment)."
-    - "Shipped 2 iOS apps to the App Store (with others under development) with 172 total downloads and 70 monthly active users during the first month, and a 5-star average rating."
+    - "Shipped 4 iOS apps to the App Store plus open-source macOS developer tools; the first 2 apps reached 172 downloads and 70 monthly active users in their first month, with a 5-star average rating."
     - "Built Paletto, a full-stack commission-management SaaS for artists, web-first with Next.js and Supabase plus a cross-platform Expo mobile app (under development), taking it from zero to ~32 monthly users."
-  tags: [TypeScript, Next.js, React Native, Expo, Supabase, Swift, Python]
+  tags: [TypeScript, Next.js, React Native, Expo, Supabase, Swift, SwiftUI, Python]
 
 - role: "Software Developer"
   company: "Western Governors University"

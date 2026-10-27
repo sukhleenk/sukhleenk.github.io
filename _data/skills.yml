@@ -3,11 +3,11 @@
 
 - category: "Languages"
   color: "#E8604C"
-  items: [Python, Java, "JavaScript / TypeScript", Swift, "C#", R, SQL, "Bash / Shell", "HTML / CSS", LaTeX]
+  items: [Python, PHP, Java, "JavaScript / TypeScript", Swift, "C#", R, SQL, "Bash / Shell", "HTML / CSS", LaTeX]
 
 - category: "Frameworks"
   color: "#F2A93B"
-  items: [React, React Native, "Next.js", "Node.js", Express, Django, "Tailwind CSS", "REST APIs", SwiftUI, ".NET MAUI"]
+  items: [Laravel, Livewire, Pest, React, React Native, "Next.js", "Node.js", Express, Django, "Tailwind CSS", "REST APIs", SwiftUI, ".NET MAUI"]
 
 - category: "Databases"
   color: "#3E8E7E"
@@ -15,7 +15,7 @@
 
 - category: "ML / AI"
   color: "#7C77B9"
-  items: [PyTorch, scikit-learn, Keras, OpenCV, Huggingface Transformers, NumPy, Pandas]
+  items: [OpenAI API, MCP, LLM Evals, PyTorch, scikit-learn, Keras, OpenCV, Huggingface Transformers, NumPy, Pandas]
 
 - category: "Tools & DevOps"
   color: "#D2649A"
